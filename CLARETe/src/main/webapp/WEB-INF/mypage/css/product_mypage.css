@@ -1,0 +1,107 @@
+.cardcontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: calc(2vw);
+}
+
+.cardbox{
+    width: 100%;
+    height: auto; 
+    /* background-color: #dbdbdb; */
+    transition: all 0.5s;
+}
+
+.cardbox:hover{
+    transform: translateY(-0.5208vw);
+}
+
+.cardimg{
+    width: 100%; 
+    aspect-ratio: 1 / 1;
+	object-fit: cover;
+    background-color: #f1f1f1;
+}
+
+.cardname{
+    font-size: clamp(16px, 0.8333vw, 200px);
+    text-align: center;
+}
+
+.cardprice{
+    font-size: clamp(16px, 0.8333vw, 200px);
+    text-align: center;
+}
+
+
+.cartgo{
+    width: clamp(180px, 10.4167vw, 1000px);
+    height: clamp(50px, 3.1250vw, 1000px);
+    font-size: clamp(16px, 0.8333vw, 200px);
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.5s;
+}
+
+.cartgo:hover{
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+    box-sizing: border-box;
+}
+
+
+.cartbox{
+    width: calc(100% - 160px); 
+    min-width: 600px; 
+    height: auto; 
+    border: 0px solid green; 
+    margin: 5.2083vw auto; 
+    display: flex; 
+    justify-content: space-between;
+}
+
+.cartbox > div:nth-child(2){
+    width: 80%; 
+    display: flex; 
+    justify-content: center;
+}
+
+.leftdiv{
+    display: block;
+    width: 16%;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .cardcontainer{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .leftdiv{
+        display: none;
+    }
+
+    .cartbox{
+        width: 100%;
+    }
+
+    .cartbox > div:nth-child(2){
+        width: 100%;
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 575px) {
+    .cardcontainer{
+        grid-template-columns: 1fr;
+    }
+}

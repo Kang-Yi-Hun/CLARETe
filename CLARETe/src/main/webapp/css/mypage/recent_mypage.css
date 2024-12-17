@@ -1,0 +1,147 @@
+.mypage_contants_bottom{
+    margin-top: 3.1250vw;
+    width: 100%;
+    height: auto;
+    border: 0px solid red;
+}
+
+
+.recent-orders{
+    width: 100%;
+    height: auto;
+    border: 1px #D9D9D9 solid;
+
+}
+
+.recent-orders > div{
+    width: 100%;
+    min-height: clamp(120px, 7.2917vw, 1000px);
+    box-sizing: border-box;
+    padding: 1.2500vw;
+    transform-origin: left;
+    transition: all 0.5s;
+
+}
+
+.recent-orders > div > ul{
+    display: flex;
+    align-items: center;
+}
+
+.recent-img{
+    width: clamp(90px, 4.7917vw, 1000px);
+    height: clamp(90px, 4.7917vw, 1000px);
+    font-size: clamp(14px, 0.8333vw, 200px);
+    border-radius: 5px;
+    background-color: #dbdbdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recent-orders > div > ul > li:nth-child(2){
+    width: 25%;
+    font-size: clamp(14px, 0.8333vw, 200px);
+}
+
+.recent-orders > div > ul > li:nth-child(3){
+    width: 40%;
+    font-size: clamp(14px, 0.8333vw, 200px);
+}
+
+.recent-orders > div > ul > li:nth-child(4){
+    width: 17.5%;
+    font-size: clamp(20px, 1.0417vw, 200px);
+    text-align: center;
+}
+
+.recent-orders > div > ul > li:nth-child(5){
+    width: 17.5%;
+    font-size: clamp(10px, 0.8333vw, 200px);
+}
+
+.recent-orders > div > ul > li:nth-child(2) > div:first-child,
+.recent-orders > div > ul > li:nth-child(3) > div:first-child{
+    margin-bottom: 0.5208vw;
+}
+
+.recent-orders > div > ul > li:not(
+    .recent-orders > div > ul > li:nth-child(1),
+    .recent-orders > div > ul > li:last-child
+){
+    border-right: 1px solid #dbdbdb;
+    margin-left: 1%;
+}
+
+.confirmed-btn{
+    box-sizing: border-box;
+    padding: 0.5208vw;
+    background-color: #333;
+    color: #fff;
+    border-radius: 0.3125vw;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.confirmed-btn:hover{
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+
+.delivery-status{
+    display: flex;
+    align-items: center;
+}
+
+
+/* select 기본 스타일 */
+select {
+    width: clamp(90px, 5.2083vw, 200px);
+    padding: clamp(8px, 0.5208vw, 200px);
+    font-size: clamp(12px, 0.7292vw, 200px);
+    border: 1px solid #B1B1B1;
+    border-radius: 0.2604vw;
+    background-color: white;
+    color: #333;
+    appearance: none; /* 브라우저 기본 스타일 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg'); /* 드롭다운 화살표 커스텀 */
+    background-repeat: no-repeat;
+    background-position: right clamp(8px, 0.5208vw, 200px) center;
+    background-size: 0.7813vw;
+}
+
+/* select 요소의 컨테이너에 화살표 추가 */
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: clamp(90px, 5.2083vw, 200px);
+    margin-left: 0.2083vw;
+}
+
+/* 화살표를 select 박스 옆에 배치 */
+.select-container::after {
+    content: '\25BC'; /* 아래 화살표 기호 */
+    position: absolute;
+    top: 50%;
+    right: 0.5208vw;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: clamp(12px, 0.7292vw, 200px);
+    color: #4B4B4B;
+}
+
+/* select 박스가 포커스될 때 스타일 */
+select:focus {
+    outline: none;
+}
+
+/* 옵션 스타일 */
+option {
+    padding: 0.5208vw;
+}
+
+

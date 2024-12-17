@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import member.domain.MemberVO;
 import chaeeun.member.model.MemberDAO;
 import chaeeun.member.model.MemberDAO_imple;
@@ -53,6 +54,7 @@ public class MemberRegister extends AbstractController {
 			member.setM_gender(gender);
 			member.setM_birth(birthday);
 			
+			
 			// 회원가입 성공시 alert 띄우고 시작페이지로 ~~~
 			String message = "";
 			String loc = "";
@@ -62,7 +64,9 @@ public class MemberRegister extends AbstractController {
 				
 				if (n == 1) {	
 					message = "회원가입 성공";
-					loc = request.getContextPath()  + "/index.cl";	// 시작페이지로 이동한다. (돌아갈 페이지가 JSP라서 request.getContextPath() 필요)			
+					loc = request.getContextPath()  + "/index.cl";	// 시작페이지로 이동한다. (돌아갈 페이지가 JSP라서 request.getContextPath() 필요)
+					
+					
 				}
 				
 			} catch (SQLException e) {

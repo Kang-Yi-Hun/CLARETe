@@ -1,0 +1,68 @@
+.review_container {
+    width: 100%;
+    height: auto;
+    border: 0px solid #000;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(1.5vw); /* 화면 너비의 1.5%를 gap으로 설정 */
+}
+
+.review_box {
+    width: 100%; /* 부모 컨테이너와 gap에 맞춰 조정 */
+    height: auto;
+    min-height: calc(15.6250vw + 1.0417vw);
+    padding: 1.2500vw;
+    box-sizing: border-box;
+    border: 1px solid #000;
+}
+
+.review_box > div:first-child{
+    display: flex;
+    align-items: center;
+    gap: 0.5208vw;
+    position: relative;
+}
+
+.review_box > div:first-child::before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -0.5208vw;
+    width: 100%;
+    height: 1px;
+    background-color: #A1A1A1;
+}
+
+.review_contants{
+    margin-top: 1.1458vw;
+    font-size: clamp(14px, 0.8333vw, 200px);
+}
+
+.review_img{
+    width: clamp(90px, 4.7917vw, 1000px);
+    height: clamp(90px, 4.7917vw, 1000px);
+    font-size: clamp(14px, 0.8333vw, 200px);
+    border-radius: 5px;
+    background-color: #dbdbdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review_info_box > :first-child{
+    font-size: clamp(14px, 0.8333vw, 200px);
+    margin-bottom: 0.6250vw;
+}
+
+.review_info_box > div:nth-child(2){
+    font-size: clamp(14px, 0.8333vw, 200px);
+}
+
+
+
+
+@media (max-width: 768px) {
+    .review_container {
+        grid-template-columns: 1fr;
+    }
+}

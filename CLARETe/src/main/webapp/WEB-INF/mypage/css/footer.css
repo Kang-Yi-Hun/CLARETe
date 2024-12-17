@@ -1,0 +1,67 @@
+footer{
+    position: relative;
+    bottom: 0;
+    background-color: #F4F3E8;
+    width: 100%;
+    padding: 60px 120px;
+    color: #000;
+}
+
+.footer-logo{
+    font-size: 60px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 40px;
+}
+
+.footer-contants{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-contant{
+    margin-bottom: 30px;
+    line-height: 1.5rem;
+}
+
+.footer-contant a{
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-contant:nth-child(2) > div{
+    margin-bottom: 16px;
+}
+
+div:nth-child(3) > div.footer-contant > div:first-child{
+    font-size: 22px;
+    margin: 4px;
+}
+div:nth-child(3) > div.footer-contant > div:nth-child(2){
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.contants-title{
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+
+/* 태블릿 */
+@media (min-width: 577px) and (max-width: 768px) {
+    .footer-contants{
+        grid-template-columns: auto auto;
+    }
+}
+
+
+/* 모바일 */
+@media (max-width: 576px) {
+    .footer-contants{
+        grid-template-columns: auto;
+    }
+}

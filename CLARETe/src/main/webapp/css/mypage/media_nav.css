@@ -1,0 +1,46 @@
+.media_nav{
+    width: 100%; 
+    height: auto; 
+    background-color: #eee;
+    box-sizing: border-box;
+    display: none;
+}
+
+.media_nav > li{
+    border-bottom: solid 1px #fff;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.media_nav > li > ul >li{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    transition: all 0.5s;
+}
+
+.media_nav > li > ul >li:hover{
+    transform: translateX(10px);
+}
+
+
+@media (max-width: 768px) {
+    .mypage_sadebar{
+        display: none;
+    }
+
+    .media_nav{
+        display: block;
+    }
+
+    .mypage_contants{
+        width: 100%;
+    }
+
+    .cardcontainer{
+        grid-template-columns: 1fr 1fr;
+    }
+}

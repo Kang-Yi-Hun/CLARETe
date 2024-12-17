@@ -1,0 +1,156 @@
+:root{
+    --body-bg: rgb(237, 237, 237);
+    --header-background: #dbdbdb;
+    --primary: #1dc0ab;
+    --primary-bark: #169282;
+    --text-color: #fff;
+    --text-dark: #000;
+    --text-gray: #fefefe;
+    --text-heding-gray: #9e9e9e;
+    --text-primary: #fafbfc;
+    --input-border: #161616;
+    --border: #2a2a2a;
+}
+
+html{
+    font-size: 16px;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background: var(--body-bg);
+}
+
+header{
+    background: var(--header-background);
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.header-wrapper{
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0% auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-wrapper > section:last-child{
+    width: 10%;
+}
+
+.header-wrapper > nav > ul,
+.header-wrapper > section:last-child > div > ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-wrapper ul a{
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.2s;
+}
+
+.header-wrapper ul a:hover{
+    font-weight: 600;
+}
+
+.header-wrapper > nav{
+    width: 15%;
+}
+
+
+/* 햄버거 */
+.hamburgerbar > ul{
+    /* display: none; */
+    list-style: none;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.hamburger{
+    margin-top: 5px;
+    height: 6px;
+    width: 30px;
+    border-radius: 20% / 90%;
+    background-color: #000000;
+    transition: 0.5s;
+    position: relative;
+}
+.hamburgerbar > ul:hover li:nth-child(1){
+    transform: translateY(10.5px) rotate(45deg);
+}
+.hamburgerbar > ul:hover li:nth-child(3){
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+.hamburgerbar > ul:hover li:nth-child(2){
+    transform: translateX(-20px);
+    opacity: 0;
+}
+/* 햄버거 */
+
+#nav-links{
+    display: none;
+}
+
+
+.header-icon-wrapper{
+    width: 100%;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px){
+    #nav-links{
+        display: none;
+    }
+
+    /* nav바 */
+    .nav-links {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 0px;
+        top: 10vh; /* nav 아래에 위치 10vh 은 앞서 설정한 header 의 높이(전체 화면의 10%라는 뜻) */
+        background-color: #fff; /* 배경색 지정 */
+        width: 100vw;
+    }
+
+    .nav-links li a{
+        color: #000; /* 글자색 지정 */
+    }
+
+    .nav-links li{
+        height: 10vh;
+    }
+
+    .nav-links.show {
+        display: block; /* 클래스가 'show'일 때 보이기 */
+    }
+
+    /* 햄버거 버튼 생성 및 가운데 정렬 */
+    .hamburgerbar > ul{
+        display: block;
+    }
+
+    .header-wrapper > section:first-child{
+        width: 20%;
+    }
+
+    .header-wrapper > section:last-child{
+        width: 20%;
+    }
+}
+
