@@ -254,4 +254,36 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
+	// 아이디 찾기
+	@Override
+	public String findUserid(Map<String, String> paraMap) throws SQLException {
+		String m_id = null;
+	      
+	      try {
+	          conn = ds.getConnection();
+	          
+	          String sql = " select m_id "
+	                    + " from tbl_member "
+	                    + " where m_status = 1 and m_name = ? and m_email = ? ";
+	          
+	          pstmt = conn.prepareStatement(sql);
+	          pstmt.setString(1, paraMap.get("m_name"));
+	          pstmt.setString(2, aes.encrypt(paraMap.get("m_email")) );
+	          
+	          rs = pstmt.executeQuery();
+	          
+	          if(rs.next()) {
+	             m_id = rs.getString("m_id");
+	          }
+	          
+	      } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      
+	      return m_id;
+	}
+
+
 }

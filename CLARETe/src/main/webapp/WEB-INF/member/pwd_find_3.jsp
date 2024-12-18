@@ -1,19 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
-	String ctx_path = request.getContextPath();
+    String ctxPath = request.getContextPath();
+    //    /MyMVC
 %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>비밀번호 찾기</title>
-    <link rel="stylesheet" href="<%= ctx_path%>/css/member/find.css" >
-</head>
-<body>
+<%-- Required meta tags --%>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<%-- css--%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/css/member/find.css" > 
+
+<%-- Optional JavaScript --%>
+<script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
+
+<script type="text/javascript">
+
+</script>
+
+<form name="pwdFindFrm">
     <div class="find_check_container">
         <div class="find_logo">
             LOGO
@@ -32,10 +39,8 @@
                 <a href="#">비밀번호 찾기</a>
             </div>
             <div class="find_go">
-                확인
+            	<span class="check"></span><a style="color: white;" class="close" href="<%= ctxPath%>/login/loginView.cl">변경완료</a>
             </div>
         </div>
     </div>
-
-</body>
-</html>
+</form>

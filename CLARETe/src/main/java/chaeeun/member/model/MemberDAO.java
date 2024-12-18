@@ -22,5 +22,11 @@ public interface MemberDAO {
 
    // 로그인
    MemberVO login(Map<String, String> paraMap) throws SQLException;
+
+   // 아이디 찾기
+   String findUserid(Map<String, String> paraMap) throws SQLException;
+
+   // 비밀번호 찾기1
+   boolean isUserExist(Map<String, String> paraMap) throws SQLException;
    
 }
