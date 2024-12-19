@@ -17,7 +17,45 @@
 <script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
 
 <script type="text/javascript">
+$(document).ready(function(){
+	
+	const method = "${requestScope.method}";
+	
+	console.log("~~~확인용 method : "+method);
+	
+	
+	
+	$("div.find_go").click(function(){
+        goFind(); 
+   	});// end of $("button.btn-success").click(function(){})-----
+	
+    
+}); // end of $(document).ready(function(){}) 
 
+// Function Declaration
+//'input:text[name="m_email"]'
+function goFind() {
+	
+	console.log(${requestScope.certificationCode});
+	console.log(typeof ${requestScope.certificationCode});
+	
+	const check = $('div.input_container > input#m_email').val();
+	alert(check);
+	console.log(check);
+	if(${requestScope.certificationCode}.equals(check)) {
+		alert("확인용 일치");
+	}
+	else {
+		alert("인증번호가 일치하지 않습니다.");
+	}
+  
+	
+	
+    const frm = document.pwdFindFrm;
+    frm.action = "<%= ctxPath%>/member/pwd_find_2.cl";
+    frm.submit();
+}// end of function goFind(){}-----------------------
+	
 </script>
 
 <form name="pwdFindFrm">
@@ -41,14 +79,10 @@
             </div>
 
             <div class="input_container">
-                <input type="text" name="name" placeholder="인증번호를 입력해주세요" />
-            </div>
-            
-            <div class="find_btn">
-                <a href="#">아이디 찾기</a>
+                <input type="text" id = "m_email" name="m_email" placeholder="인증번호를 입력해주세요" />
             </div>
             <div class="find_go">
-                <span class="check"></span><a style="color: white;" class="close" href="<%= ctxPath%>/member/pwd_find_3.cl">인증번호 입력하기</a>
+                <a style="color: white;" class="close" href="<%= ctxPath%>/member/pwd_find_3.cl">인증번호 입력하기</a>
             </div>
         </div>
     </div>

@@ -19,16 +19,17 @@ public class Pwd_find_1 extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String method = request.getMethod(); // "GET" 또는 "POST"
+		HttpSession session = request.getSession();
 		
 		if("POST".equalsIgnoreCase(method)) {
 	         // 비밀번호 찾기 모달창에서 "찾기" 버튼을 클릭했을 경우
 		
-			String userid = request.getParameter("userid");
-			String email = request.getParameter("email");
+			String m_id = request.getParameter("m_id");
+			String m_email = request.getParameter("m_email");
 			
 			Map<String, String> paraMap = new HashMap<>();
-			paraMap.put("userid", userid);
-			paraMap.put("email", email);
+			paraMap.put("m_id", m_id);
+			paraMap.put("m_email", m_email);
 			
 			boolean isUserExist = mdao.isUserExist(paraMap);
 			
@@ -72,14 +73,14 @@ public class Pwd_find_1 extends AbstractController {
 				GoogleMail mail = new GoogleMail();
 				
 				try {
-					mail.send_certification_code(email, certification_code);
+					mail.send_certification_code(m_email, certification_code);
 					sendMailSuccess = true; // 메일 전송 성공했음을 기록함.
 					
 					// 세션불러오기
-					HttpSession session = request.getSession();
+					
 					session.setAttribute("certification_code", certification_code);
 					// 발급한 인증코드를 세션에 저장시킴.
-					
+				//	System.out.println("##################" + session.getAttribute("certification_code"));
 				}catch (Exception e) {
 					// 메일 전송이 실패한 경우
 					e.printStackTrace();
@@ -92,8 +93,8 @@ public class Pwd_find_1 extends AbstractController {
 			
 			request.setAttribute("isUserExist", isUserExist);
 			request.setAttribute("sendMailSuccess", sendMailSuccess);
-			request.setAttribute("email", email);
-			request.setAttribute("userid", userid);
+			request.setAttribute("m_email", m_email);
+			request.setAttribute("m_id", m_id);
 			
 		} // end of if("POST".equalsIgnoreCase(method))----------
 		

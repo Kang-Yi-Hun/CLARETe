@@ -31,13 +31,10 @@
         <div class="input_box">
 
             <div class="input_container">
-                <input type="text" name="name" placeholder="새로운 비밀번호를 입력해주세요" />
-                <input type="text" name="name" placeholder="비밀번호를 한번 더 입력해주세요" />
+                <input type="password" name="name" placeholder="새로운 비밀번호를 입력해주세요" />
+                <input type="password" name="name" placeholder="비밀번호를 한번 더 입력해주세요" />
             </div>
 
-            <div class="find_btn">
-                <a href="#">비밀번호 찾기</a>
-            </div>
             <div class="find_go">
             	<span class="check"></span><a style="color: white;" class="close" href="<%= ctxPath%>/login/loginView.cl">변경완료</a>
             </div>

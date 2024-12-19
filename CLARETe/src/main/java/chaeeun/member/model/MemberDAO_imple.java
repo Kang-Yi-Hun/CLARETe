@@ -286,4 +286,34 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
+	// 비밀번호 찾기1
+	@Override
+	public boolean isUserExist(Map<String, String> paraMap) throws SQLException {
+		
+		boolean isUserExist = false;
+	      
+	      try {
+	          conn = ds.getConnection();
+	          
+	          String sql = " select m_id "
+	                    + " from tbl_member "
+	                    + " where m_status = 1 and m_id = ? and m_email = ? ";
+	          
+	          pstmt = conn.prepareStatement(sql);
+	          pstmt.setString(1, paraMap.get("m_id"));
+	          pstmt.setString(2, aes.encrypt(paraMap.get("m_email")) );
+	          
+	          rs = pstmt.executeQuery();
+	          
+	          isUserExist = rs.next();
+	          
+	      } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      
+	      return isUserExist;
+	}
+
 }

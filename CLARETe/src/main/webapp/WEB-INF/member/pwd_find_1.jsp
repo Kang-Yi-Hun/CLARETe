@@ -20,37 +20,45 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-	  $("div.find_go > span.check").html("확인");
 	  const method = "${requestScope.method}";
 	  
 	  console.log("~~~확인용 method : "+ method);	
 	  
 	  if(method == "GET"){
-		  $("div.find_go > a.check").hide();
+		  $("div.find_go2").hide();
 	  }
 	  
 	  if(method == "POST"){
-		  $("div.find_go > span.check").html("");
-		  $('input:text[name="userid"]').val("${requestScope.userid}");
-		  $('input:text[name="email"]').val("${requestScope.email}");
+		  $("div.find_go2").show();
+		  $("div.find_go").hide();
+		  $('input:text[name="m_id"]').val("${requestScope.m_id}");
+		  $('input:text[name="m_email"]').val("${requestScope.m_email}");
 		  
 		  if(${requestScope.isUserExist == true && requestScope.sendMailSuccess == true}) {
-	           $("button.btn-success").hide();  // "찾기" 버튼 숨기기
+	           $("div.find_go2").click(function(){
+	           	 alert("인증번호를 발송했습니다.");
+	            });
 	        }
+		  else {
+			 alert("사용자 정보가 없습니다!");
+			 $("div.find_go").show();
+			 $("div.find_go2").hide();
+			 
+		  }
 	  }
 	  
 	  
-	  $("button.btn-success").click(function(){
+	  $("div.find_go").click(function(){
            goFind(); 
       });// end of $("button.btn-success").click(function(){})-----
      
-      $("input:text[name='email']").bind("keyup", function(e){
+      $("input:text[name='m_email']").bind("keyup", function(e){
           if(e.keyCode == 13) {
              goFind();
           }
       });// end of $("input:text[name='email']").bind("keyup", function(e){})-------
 
-	  
+      
 	  
   }); // end of $(document).ready(function(){})--------------- 
   
@@ -58,21 +66,21 @@
   // Function Declaration
   function goFind() {
     
-     const userid = $("input:text[name='userid']").val().trim();
+     const m_id = $("input:text[name='m_id']").val().trim();
      
-     if(userid == "") {
+     if(m_id == "") {
         alert("아이디를 입력하세요!!");
         return; // 종료
      }
      
-     const email = $("input:text[name='email']").val();
+     const m_email = $("input:text[name='m_email']").val();
      
    // const regExp_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;  
    // 또는
-      const regExp_email = new RegExp(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);  
+      const regExp_m_email = new RegExp(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);  
      // 이메일 정규표현식 객체 생성 
          
-      const bool = regExp_email.test(email);
+      const bool = regExp_m_email.test(m_email);
  
       if(!bool) {
          // 이메일이 정규표현식에 위배된 경우
@@ -84,8 +92,8 @@
       frm.action = "<%= ctxPath%>/member/pwd_find_1.cl";
       frm.method = "post";
       frm.submit();
-      $("div.find_go > span.check").html("");
-      $("div.find_go > a.close").show();
+      $("div.find_go").hide();
+      $("div.find_go2").show();
   }// end of function goFind(){}-----------------------
   
   
@@ -102,16 +110,20 @@
         <div class="input_box">
 
             <div class="input_container">
-                <input type="text" name="name" placeholder="아이디를 입력해주세요" />
-                <input type="text" name="name" placeholder="이메일을 입력해주세요" />
+                <input type="text" name="m_id" placeholder="아이디를 입력해주세요" />
+                <input type="text" name="m_email" placeholder="이메일을 입력해주세요" />
             </div>
             
             <div class="find_btn">
                 <a href="<%= ctxPath%>/member/id_find.cl">아이디 찾기</a>
             </div>
             <div class="find_go">
-                <span class="check"></span><a style="color: white;" class="close" href="<%= ctxPath%>/member/pwd_find_2.cl">인증번호 입력하기</a>
+                <span class="check">확인</span>
+            </div>
+            <div class="find_go2">
+            <a style="color: white;" class="close" href="<%= ctxPath%>/member/pwd_find_2.cl">인증번호 입력하기</a>
             </div>
         </div>
     </div>
 </form>
+
