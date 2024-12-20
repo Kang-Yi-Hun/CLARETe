@@ -28,5 +28,8 @@ public interface MemberDAO {
 
    // 비밀번호 찾기1
    boolean isUserExist(Map<String, String> paraMap) throws SQLException;
+
+   // 비밀번호 변경하기
+   int pwdUpdate(Map<String, String> paraMap) throws SQLException;
    
 }

@@ -94,6 +94,16 @@
       frm.submit();
       $("div.find_go").hide();
       $("div.find_go2").show();
+      
+      $("div.find_go2").click(function(){
+    	 
+    	  const frm = document.pwdFindFrm;
+          frm.action = "<%= ctxPath%>/member/pwd_find_2.cl";
+          frm.method = "post";
+          frm.submit();
+    	  
+      });
+      
   }// end of function goFind(){}-----------------------
   
   
@@ -121,7 +131,7 @@
                 <span class="check">확인</span>
             </div>
             <div class="find_go2">
-            <a style="color: white;" class="close" href="<%= ctxPath%>/member/pwd_find_2.cl">인증번호 입력하기</a>
+            	<span style="color: white;" class="close">인증번호 입력하기</span>
             </div>
         </div>
     </div>

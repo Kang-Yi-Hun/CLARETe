@@ -19,15 +19,17 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	
+	
 	const method = "${requestScope.method}";
 	
-	console.log("~~~확인용 method : "+method);
+//	console.log("~~~확인용 method : "+method);
 	
 	
-	
-	$("div.find_go").click(function(){
-        goFind(); 
-   	});// end of $("button.btn-success").click(function(){})-----
+	$(document).on('click', 'div.find_go', function(){
+		goFind();
+	});
+
 	
     
 }); // end of $(document).ready(function(){}) 
@@ -36,24 +38,27 @@ $(document).ready(function(){
 //'input:text[name="m_email"]'
 function goFind() {
 	
-	console.log(${requestScope.certificationCode});
-	console.log(typeof ${requestScope.certificationCode});
+	const check = $('#m_email').val();
+//	alert(check);
 	
-	const check = $('div.input_container > input#m_email').val();
-	alert(check);
-	console.log(check);
-	if(${requestScope.certificationCode}.equals(check)) {
-		alert("확인용 일치");
+	$('input:text[name="m_id"]').val("${requestScope.m_id}");
+//	console.log($('#m_email').val());
+//	console.log(check);
+	
+	
+	if("${requestScope.certification_code}" == check) {
+		 alert("비밀번호 변경으로 이동합니다.");
+		 const frm = document.pwdFindFrm;
+	     frm.action = "<%= ctxPath%>/member/pwd_find_3.cl";
+	     frm.method = "post";
+	     frm.submit();
 	}
 	else {
 		alert("인증번호가 일치하지 않습니다.");
 	}
-  
 	
 	
-    const frm = document.pwdFindFrm;
-    frm.action = "<%= ctxPath%>/member/pwd_find_2.cl";
-    frm.submit();
+    
 }// end of function goFind(){}-----------------------
 	
 </script>
@@ -81,8 +86,11 @@ function goFind() {
             <div class="input_container">
                 <input type="text" id = "m_email" name="m_email" placeholder="인증번호를 입력해주세요" />
             </div>
+            
+            <input type="hidden" name="m_id" value="${requestScope.m_id}" />
+            
             <div class="find_go">
-                <a style="color: white;" class="close" href="<%= ctxPath%>/member/pwd_find_3.cl">인증번호 입력하기</a>
+                <a style="color: white;" class="close">인증번호 입력하기</a>
             </div>
         </div>
     </div>

@@ -316,4 +316,31 @@ public class MemberDAO_imple implements MemberDAO {
 	      return isUserExist;
 	}
 
+
+	// 비밀번호 변경하기
+	@Override
+	public int pwdUpdate(Map<String, String> paraMap) throws SQLException {
+
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " update tbl_member set m_pwd = ? " 
+					   + " where m_id = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, (paraMap.get("new_m_pwd")) ); // 암호를 SHA256 알고리즘으로 단방향 암호화 시킨다.
+			pstmt.setString(2, paraMap.get("m_id") );  
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return result;		
+	} // end of public int pwdUpdate(Map<String, String> paraMap) throws SQLException
+
 }
