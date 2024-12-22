@@ -23,7 +23,7 @@ public class Login extends AbstractController {
 	    
 	    if(!"POST".equalsIgnoreCase(method)) {	// "GET"
 			
-			String message = "비정상적인 경로로 들어왔습니다.";
+			String message = "鍮��������� 寃쎈�濡� �ㅼ�댁���듬����.";
 			String loc = "javascript:history.back()";
 			
 			request.setAttribute("message", message);
@@ -31,7 +31,7 @@ public class Login extends AbstractController {
 			
 			super.setViewPage("/WEB-INF/msg.jsp");
 			
-			return; // execute(HttpServletRequest request, HttpServletResponse respone) 메소드 종료함.  
+			return; // execute(HttpServletRequest request, HttpServletResponse respone) 硫����� 醫�猷���.  
 		} 
 	    
 	    else {	// "POST"
@@ -48,17 +48,17 @@ public class Login extends AbstractController {
 			MemberVO loginuser = mdao.login(paraMap); 
 			
 			if(loginuser != null) {
-				System.out.println(id + "로그인 성공");
+				System.out.println(id + "濡�洹몄�� �깃났");
 				
 				/*
-				 	여기에 휴면 코드 추가
+				 	�ш린�� �대㈃ 肄��� 異�媛�
 				 */
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginuser", loginuser);
 				
 				/*
-			 		여기에비밀번호 변경 3개월 코드 추가
+			 		�ш린��鍮�諛�踰��� 蹂�寃� 3媛��� 肄��� 異�媛�
 				 */
 				
 				super.setRedirect(true);
@@ -67,7 +67,7 @@ public class Login extends AbstractController {
 			} // end of if(loginuser != null) {}
 			
 			else {
-				String message = "로그인 실패";
+				String message = "로그인실패!!";
 		        String loc = "javascript:history.back()";
 		         
 		        request.setAttribute("message", message);

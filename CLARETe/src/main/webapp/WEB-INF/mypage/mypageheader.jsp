@@ -11,6 +11,9 @@
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/template/template.js"></script>
 
+<script type="text/javascript">
+
+</script>
 
 <section class="section1">
             <div class="mypage_container">
@@ -22,7 +25,7 @@
                             <ul>
                                 <li><a href="#">내 정보 수정</a></li>
                                 <li><a href="#">배송지 입력</a></li>
-                                <li><a href="#">회원탈퇴</a></li>
+                                <li><a href="<%= ctxPath%>/mypage/memberDelete.cl">회원탈퇴</a></li>
                             </ul>
                         </li>
                         <li>
@@ -89,7 +92,7 @@
                             <ul>
                                 <li><a href="#">내 정보 수정</a></li>
                                 <li><a href="#">배송지 입력</a></li>
-                                <li><a href="#">회원탈퇴</a></li>
+                                <li><a href="<%= ctxPath%>/mypage/memberDelete.cl">회원탈퇴</a></li>
                             </ul>
                         </li>
                         <li>

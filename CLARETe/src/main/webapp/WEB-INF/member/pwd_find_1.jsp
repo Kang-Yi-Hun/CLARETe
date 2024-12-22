@@ -58,7 +58,14 @@
           }
       });// end of $("input:text[name='email']").bind("keyup", function(e){})-------
 
-      
+      $("div.find_go2").click(function(){
+     	 
+    	  const frm = document.pwdFindFrm;
+          frm.action = "<%= ctxPath%>/member/pwd_find_2.cl";
+          frm.method = "post";
+          frm.submit();
+    	  
+      });
 	  
   }); // end of $(document).ready(function(){})--------------- 
   
@@ -95,14 +102,7 @@
       $("div.find_go").hide();
       $("div.find_go2").show();
       
-      $("div.find_go2").click(function(){
-    	 
-    	  const frm = document.pwdFindFrm;
-          frm.action = "<%= ctxPath%>/member/pwd_find_2.cl";
-          frm.method = "post";
-          frm.submit();
-    	  
-      });
+      
       
   }// end of function goFind(){}-----------------------
   

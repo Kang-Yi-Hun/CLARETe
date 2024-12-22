@@ -22,14 +22,14 @@ import util.security.Sha256;
 
 public class MemberDAO_imple implements MemberDAO {
 
-   private DataSource ds;  // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다. 
+   private DataSource ds;  // DataSource ds �� ����移��곗베�� ��怨듯���� DBCP(DB Connection Pool)�대��. 
    private Connection conn;
    private PreparedStatement pstmt;
    private ResultSet rs;
    
    private AES256 aes;
    
-   // 생성자
+   // ���깆��
    public MemberDAO_imple() {
       
       try {
@@ -38,7 +38,7 @@ public class MemberDAO_imple implements MemberDAO {
           ds = (DataSource)envContext.lookup("jdbc/semioracle");
           
           aes = new AES256(SecretMyKey.KEY);
-          // SecretMyKey.KEY 은 우리가 만든 암호화/복호화 키이다.
+          // SecretMyKey.KEY �� �곕━媛� 留��� ���명��/蹂듯�명�� �ㅼ�대��.
           
       } catch(NamingException e) {
          e.printStackTrace();
@@ -48,7 +48,7 @@ public class MemberDAO_imple implements MemberDAO {
    }
    
    
-   // 사용한 자원을 반납하는 close() 메소드 생성하기
+   // �ъ�⑺�� ������ 諛��⑺���� close() 硫����� ���깊��湲�
    private void close() {
       try {
          if(rs    != null) {rs.close();     rs=null;}
@@ -60,7 +60,7 @@ public class MemberDAO_imple implements MemberDAO {
    }// end of private void close()---------------
    
    
-   // 모든 회원을 조회하는 메소드
+   // 紐⑤�� ������ 議고������ 硫�����
    @Override
    public List<MemberVO> SelectAll_member() throws SQLException {
       
@@ -113,7 +113,7 @@ public class MemberDAO_imple implements MemberDAO {
    }// end of public boolean idDuplicateCheck(String userid) throws SQLException------
 
 
-    // 회원가입
+    // ����媛���
 	@Override
 	public int registerMember(MemberVO member) throws SQLException {
 
@@ -151,7 +151,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 아이디 중복체크 (중복이면 true 리턴, 중복 아니면 false 리턴)
+	// ���대�� 以�蹂듭껜�� (以�蹂듭�대㈃ true 由ы��, 以�蹂� ����硫� false 由ы��)
 	@Override
 	public boolean idDuplicateCheck(String m_id) throws SQLException {
 		
@@ -169,8 +169,8 @@ public class MemberDAO_imple implements MemberDAO {
 			  
 			  rs = pstmt.executeQuery();
 			  
-			  isExists = rs.next(); // 행이 있으면(중복된 userid) true,
-			                        // 행이 없으면(사용가능한 userid) false
+			  isExists = rs.next(); // ���� ���쇰㈃(以�蹂듬�� userid) true,
+			                        // ���� ���쇰㈃(�ъ�⑷��ν�� userid) false
 			  
 		} finally {
 			close();
@@ -180,7 +180,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 이메일 중복검사
+	// �대��� 以�蹂듦���
 	@Override
 	public boolean emailDuplicateCheck(String email) throws SQLException {
 
@@ -198,8 +198,8 @@ public class MemberDAO_imple implements MemberDAO {
 			  
 			  rs = pstmt.executeQuery();
 			  
-			  isExists = rs.next(); // 행이 있으면(중복된 userid) true,
-			                        // 행이 없으면(사용가능한 userid) false
+			  isExists = rs.next(); // ���� ���쇰㈃(以�蹂듬�� userid) true,
+			                        // ���� ���쇰㈃(�ъ�⑷��ν�� userid) false
 			  
 		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -212,7 +212,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 로그인
+	// 濡�洹몄��
 	@Override
 	public MemberVO login(Map<String, String> paraMap) throws SQLException {
 		
@@ -227,8 +227,8 @@ public class MemberDAO_imple implements MemberDAO {
 	                   + " where m_id = ? and m_pwd = ? ";
 
 	        pstmt = conn.prepareStatement(sql);
-	        pstmt.setString(1, paraMap.get("id")); // m_id 키 확인
-	        pstmt.setString(2, paraMap.get("pwd")); // 암호화된 비밀번호
+	        pstmt.setString(1, paraMap.get("id")); // m_id �� ����
+	        pstmt.setString(2, paraMap.get("pwd")); // ���명���� 鍮�諛�踰���
 
 	        rs = pstmt.executeQuery();
 
@@ -254,7 +254,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 아이디 찾기
+	// ���대�� 李얘린
 	@Override
 	public String findUserid(Map<String, String> paraMap) throws SQLException {
 		String m_id = null;
@@ -286,7 +286,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 비밀번호 찾기1
+	// 鍮�諛�踰��� 李얘린1
 	@Override
 	public boolean isUserExist(Map<String, String> paraMap) throws SQLException {
 		
@@ -317,30 +317,55 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 비밀번호 변경하기
+	// 鍮�諛�踰��� 蹂�寃쏀��湲�
 	@Override
 	public int pwdUpdate(Map<String, String> paraMap) throws SQLException {
 
+	    int result = 0;
+
+	    try {
+	        conn = ds.getConnection();
+
+	        String sql = " update tbl_member set m_pwd = ? "
+	        		   + " WHERE m_id = ? ";
+
+	        pstmt = conn.prepareStatement(sql);
+
+	        pstmt.setString(1, paraMap.get("new_m_pwd"));
+	        pstmt.setString(2, paraMap.get("m_id"));
+
+	        result = pstmt.executeUpdate();
+
+	    } finally {
+	        close();
+	    }
+
+	    return result;
+	}
+
+
+	@Override
+	public int memberDelete(Map<String, String> paraMap) throws SQLException {
 		int result = 0;
-		
-		try {
-			conn = ds.getConnection();
-			
-			String sql = " update tbl_member set m_pwd = ? " 
-					   + " where m_id = ? ";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, (paraMap.get("new_m_pwd")) ); // 암호를 SHA256 알고리즘으로 단방향 암호화 시킨다.
-			pstmt.setString(2, paraMap.get("m_id") );  
-			
-			result = pstmt.executeUpdate();
-			
-		} finally {
-			close();
-		}
-		
-		return result;		
-	} // end of public int pwdUpdate(Map<String, String> paraMap) throws SQLException
+
+	    try {
+	        conn = ds.getConnection();
+
+	        String sql = " update tbl_member set m_status = 0 "
+	        		   + " WHERE m_id = ? ";
+
+	        pstmt = conn.prepareStatement(sql);
+
+	        pstmt.setString(1, paraMap.get("m_id"));
+
+	        result = pstmt.executeUpdate();
+
+	    } finally {
+	        close();
+	    }
+
+	    return result;
+	}
+
 
 }

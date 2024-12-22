@@ -20,49 +20,62 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	const method = "${requestScope.method}";
+	
+	console.log(method);
 	
     $("div.find_go").click(function(){
         
-        const pwd  = $("input:password[name='pwd']").val();
-        const pwd2 = $("input:password[id='pwd2']").val();
-        
-        if(pwd != pwd2) {
-           alert("암호가 일치하지 않습니다.");
-           $("input:password[name='pwd']").val("");
-           $("input:password[id='pwd2']").val("");
-           return;  // 종료
-        }
-        else {
-           const regExp_pwd = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g);  
-            // 숫자/문자/특수문자 포함 형태의 8~15자리 이내의 암호 정규표현식 객체 생성 
-            
-            const bool = regExp_pwd.test(pwd);   
-           
-            if(!bool) {
-              // 암호가 정규표현식에 위배된 경우
-              alert("암호는 8글자 이상 15글자 이하에 영문자,숫자,특수기호가 혼합되어야만 합니다.");
-              $("input:password[name='pwd']").val("");
-              $("input:password[id='pwd2']").val("");
-              return; // 종료
-            }
-            else {
-               // 암호가 정규표현식에 맞는 경우
-               const frm = document.pwdUpdateEndFrm;
-               frm.action = "<%= ctxPath%>/member/pwd_find_3.cl";
-               frm.method = "post";
-               frm.submit();
-            }
-        }
+    	goFind();
         
      });// end of $("button.btn-success").click(function(){})----
+     
+    
     
 }); // end of $(document).ready(function(){})
+
+function goFind() {
+	
+	const pwd  = $("input:password[name='pwd']").val();
+    const pwd2 = $("input:password[name='pwd2']").val();
+    
+    if(pwd != pwd2) {
+       alert("암호가 일치하지 않습니다.");
+       $("input:password[name='pwd']").val("");
+       $("input:password[name='pwd2']").val("");
+       return;  // 종료
+    }
+    else {
+       const regExp_pwd = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g);  
+        // 숫자/문자/특수문자 포함 형태의 8~15자리 이내의 암호 정규표현식 객체 생성 
+        
+        const bool = regExp_pwd.test(pwd);   
+       
+        if(!bool) {
+          // 암호가 정규표현식에 위배된 경우
+          alert("암호는 8글자 이상 15글자 이하에 영문자,숫자,특수기호가 혼합되어야만 합니다.");
+          $("input:password[name='pwd']").val("");
+          $("input:password[name='pwd2']").val("");
+          return; // 종료
+        }
+        else {
+           // 암호가 정규표현식에 맞는 경우
+           alert("사용자 ID ${requestScope.m_id}님의 비밀번호가 새로이 변경되었습니다.");
+        }
+    }
+    
+    const frm = document.pwdUpdateEndFrm;
+    frm.action = "<%= ctxPath%>/login/loginView.cl";
+    frm.method = "post";
+    frm.submit();
+    
+} // end of function goFind(){}-----------------------
 
 
 </script>
 
 
-<c:if test="${requestScope.method == 'GET'}">
+<c:if test="${requestScope.method == 'POST'}">
 	<form name="pwdUpdateEndFrm">
 	    <div class="find_check_container">
 	        <div class="find_logo">
@@ -81,21 +94,14 @@ $(document).ready(function(){
 			<input type="hidden" name="m_id" value="${requestScope.m_id}" />
 	
 	            <div class="find_go">
-	            	<span class="check"></span><a style="color: white;" class="close" href="<%= ctxPath%>/login/loginView.cl">변경완료</a>
+	            	<span class="check">변경완료</span>
 	            </div>
 	        </div>
 	    </div>
 	</form>
 </c:if>
 
-<c:if test="${requestScope.method == 'POST'}">
-      <div style="text-align: center; font-size: 14pt; color: navy;">
-         <c:if test="${requestScope.n == 1}">
-            사용자 ID ${requestScope.m_id}님의 비밀번호가 새로이 변경되었습니다.
-         </c:if>
          
-         <c:if test="${requestScope.n == 0}">
+    <%--      <c:if test="${requestScope.n == 0}">
             SQL구문 오류가 발생되어 비밀번호 변경을 할 수 없습니다.
-         </c:if>
-      </div>      
-  </c:if>
+         </c:if> --%>
