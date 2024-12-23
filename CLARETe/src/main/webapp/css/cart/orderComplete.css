@@ -1,0 +1,210 @@
+@charset "UTF-8";
+
+:root{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    --size2  : clamp(2px, 0.1042vw, 200px);
+    --size8  : clamp(6px, 0.4167vw, 200px);
+    --size12 : clamp(10px, 0.6250vw, 200px);
+    --size14 : clamp(12px, 0.7292vw, 200px);
+    --size15 : clamp(14px, 0.7813vw, 200px);
+    --size16 : clamp(16px, 0.8333vw, 200px);
+    --size18 : clamp(17px, 0.9375vw, 200px);
+    --size20 : clamp(18px, 1.0417vw, 200px);
+    --size24 : clamp(20px, 1.2500vw, 200px);
+    --size30 : clamp(28px, 1.5625vw, 200px);
+    --size32 : clamp(30px, 1.6667vw, 200px);
+    --size40 : clamp(36px, 2.0833vw, 200px);
+    --size50 : clamp(46px, 2.6042vw, 200px);
+    --size52 : clamp(48px, 2.7083vw, 200px);
+    --size60 : clamp(50px, 3.1250vw, 200px);
+    --size65 : clamp(60px, 3.3854vw, 200px);
+
+    --size70  : clamp(66px, 3.6458vw, 2000px);
+    --size72  : clamp(68px, 3.7500vw, 200px);
+    --size98  : clamp(80px, 5.1042vw, 2000px);
+    --size100 : clamp(80px, 5.2083vw, 2000px);
+    --size120 : clamp(100px, 6.2500vw, 2000px);
+    --size160 : clamp(154px, 8.3333vw, 2000px);
+    --size300 : clamp(280px, 15.6250vw, 2000px);
+    --size400 : clamp(380px, 20.8333vw, 2000px);
+    --size670 : clamp(650px, 34.8958vw, 2000px);
+    --size700 : clamp(680px, 36.4583vw, 3000px);
+    --size930 : clamp(900px, 48.4375vw, 10000px);
+}
+
+#all_container {
+	height: auto;
+}
+
+/*-----------------------------------------------*/
+#fistDiv {
+	margin-top: var(--size72);
+	display: flex;
+	flex-direction: column;
+	gap: var(--size40);
+}
+
+#fistDiv > a {
+	margin: auto;
+} 
+
+.cart{
+	font-size: var(--size32);
+}
+
+.step{
+	margin-bottom: var(--size20);
+}
+/*-----------------------------------------------*/
+
+
+/*-----------------------------------------------*/
+#secondDiv {
+	height: 170px;
+	margin-left: 820px;
+	margin-right: 820px;
+	margin-top: 20px;
+}
+
+#orderImg {
+	text-align: center;	
+}
+
+img {
+	width: 100px;
+	height: 100px;
+}
+
+#ordernum {
+	text-align: center;	
+	margin-top: 20px;
+	font-size: 16pt;
+}
+
+#num {
+	color: #4087D2;
+}
+/*-----------------------------------------------*/
+
+
+/*-----------------------------------------------*/
+#thirdDiv {
+	height: auto;
+	margin-left: 370px;
+	margin-right: 370px;
+	margin-top: 40px;
+}
+
+#menu1 {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	padding-bottom: 12px;
+}
+
+#productInfo {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	padding-bottom: 16px;
+	padding-top: 20px;
+	padding-left: 50px;
+	
+	display: flex;
+}
+
+.perfume {
+	margin-left: 20px;
+}
+
+.option {
+	padding-right: 50px;
+	margin-left: 920px;
+	margin-top: 40px;
+}
+
+.optionSpan {
+	color: #6D6D6D
+}
+/*-----------------------------------------------*/
+
+
+/*-----------------------------------------------*/
+#fourth {
+	height: auto;
+	margin-left: 370px;
+	margin-right: 370px;
+	margin-top: 40px;
+	display: flex;
+	gap: 50px;
+}
+
+#leftDiv {
+	width: 50%;
+	height: auto;
+}
+
+#menu2 {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	
+}
+
+#rightDiv {
+	width: 50%;
+	height: auto;
+}
+
+#menu3 {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+}
+
+table {
+	width: 60%;
+	border-collapse: collapse;
+	
+}
+
+td {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.infoTd {
+	width: 100px;
+	background-color: #F1F1F1;
+}
+
+tr > td:nth-child(2) {
+	padding-left: 20px;
+}
+
+.priceTd {
+	width: 160px;
+	background-color: #F1F1F1;
+}
+
+.total {
+	color: #4087D2;
+	font-size: 16pt;
+	font-weight: bold;
+}
+/*-----------------------------------------------*/
+
+
+/*-----------------------------------------------*/
+a {
+	display: block;
+	font-size: 20pt;
+	text-align: center;
+	margin: 70px auto;
+}
+/*-----------------------------------------------*/

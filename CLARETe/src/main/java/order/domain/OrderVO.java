@@ -4,6 +4,7 @@ import cart.domain.CartVO;
 import delivery.domain.DeliveryVO;
 import member.domain.MemberVO;
 import option.domain.OptionVO;
+import orderdetail.domain.orderdetailVO;
 import product.domain.ProductVO;
 
 public class OrderVO {
@@ -61,6 +62,10 @@ public class OrderVO {
 		this.productvo = productvo;
 	}
 	
+	public ProductVO getProduct() {
+	    return this.productvo;
+	}
+	
 	
 // CartVO 조인 
 	private CartVO cartvo;
@@ -75,7 +80,25 @@ public class OrderVO {
 	
 	
 	
+// OrderdetailVO 조인	
+	private orderdetailVO orderdetailvo;
 
+	public orderdetailVO getOrderdetailvo() {
+		return orderdetailvo;
+	}
+	public void setOrderdetailvo(orderdetailVO orderdetailvo) {
+		this.orderdetailvo = orderdetailvo;
+	}	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public int getO_num() {
 		return o_num;
 	}

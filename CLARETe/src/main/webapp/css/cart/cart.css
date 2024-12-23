@@ -33,9 +33,12 @@
     --size930 : clamp(900px, 48.4375vw, 10000px);
 }
 
+#productList {
+	margin-top: var(--size50);
+}
 
 div#all_container {
-	border: solid 1px red;
+	/*border: solid 1px red;*/
 	height: auto;
 }
 
@@ -46,19 +49,20 @@ div#all_container > div:first-child{
 	gap: var(--size40);
 }
 
-div#all_container > div > a{
+div#all_container > div > a {
 	margin: auto;
+}
+
+.step{
 	margin-bottom: var(--size20);
 }
 
-
 div#productList {
-	border: solid 1px blue;
-	width: calc(100% - 160px);
+	/*border: solid 1px blue;*/
 	height: auto;
-	margin: auto;
 	display: flex;
-	gap: calc(4vw);
+	margin-left: var(--size160);
+	margin-right: var(--size160);
 }
 
 .cart{
@@ -66,69 +70,66 @@ div#productList {
 }
 
 .cart_container{
-	width: 160.0000vw;
-	height: 300px;
-	background-color: #eee;
-	margin-left: var(--size160);
+	/*background-color: #eee;*/
+	margin-right: 42px;
 }
 
 .payment_go_box{
-	width: calc(100%);
-	height: 300px;
-	/*background-color: #eee;*/
+    width: var(--size400);
+    height: var(--size300);
 }
 
 
 .payment_info {
 	border: 1px solid #000; 
-	width: 400px;
+	width: var(--size400);
 	height: 216px;
 }
 
 .order_product {
-	width: 60px;
-	height: 19px;
+	width: var(--size120);
+	height: var(--size20);
 	display: block;
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-bottom: 20px;
+	margin-top: var(--size20);
+	margin-left: var(--size20);
+	margin-bottom: var(--size20);
 }
 
 hr {
 	width: 360px;
-	margin-left: 20px;
+	margin-left: var(--size20);
 }
 
 span.product_amount {
-	margin-left: 20px;
+	margin-left: var(--size20);
 	margin-top: 10px;
 }
 
 span.product_price {
-	margin-right: 20px;	
+	margin-right: var(--size20);
 	margin-top: 10px;
 }
 
 span.shipping {
-	margin-left: 20px;
+	margin-left: var(--size20);
 	margin-bottom: 10px;
 }
 
 span.shipping_price {
-	margin-right: 20px;	
+	margin-right: var(--size20);
 	margin-bottom: 10px;
 }
 
 span.total {
-	margin-left: 20px;
+	margin-left: var(--size20);
 }
 
 span.total_price {
-	margin-right: 20px;	
+	margin-right: var(--size20);
 }
 
 button#btn-order {
-	width: 100%;
+	width: var(--size400);
     background-color: #000;
     color: #fff;
     font-size: 16px;
@@ -136,7 +137,167 @@ button#btn-order {
     padding: 15px;
     border: none;
     cursor: pointer;
-    margin-top: 12px;
+    margin-top: var(--size12);
 }
+
+.menuDiv {
+	display: flex;
+	height: 70px;
+	/*border: solid 1px orange;*/
+}
+
+.all {
+	width: 90px;
+	height: 26px;
+	margin-top: var(--size20);
+	background-color: white;
+	border: solid 1px #A9A9A9;
+	color: black;
+}
+
+#btn_cancel {
+	margin-left: 8px;
+}
+
+.a_cart {
+	width: 200px;
+	height: var(--size20);
+	margin-right: 728px;
+	font-weight: bold;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+
+
+.totalDiv {
+	/*border: solid 1px pink;*/
+	height: 117px;
+	margin-left: 160px;
+	width: 1130px;
+	margin-top: 40px;
+	background-color: #F5F5F5;
+}
+
+.totalA {
+	margin-left: var(--size20);
+	padding-top: var(--size20);
+}
+
+.totalHr {
+	margin-top: 6px;
+	visibility: hidden;
+}
+
+.totalA > a {
+	font-weight: bold;
+}
+
+img {
+	width: 64px;
+	height: 64px;
+}
+
+
+
+
+/*-------------------*/
+input[type="checkbox"] {
+	width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: black; 
+}    
+
+.product {
+	/*border: solid 1px red;*/
+	height: 218px;
+	gap: 10px;
+	padding: 10px 0;
+}
+
+.upDiv {
+	margin-top: var(--size20);
+	display: flex;
+	lign-items: center;
+    gap: 10px;
+}
+
+.upDiv input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.infoDiv {
+	flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoDiv br {
+    margin-bottom: 5px;
+}
+
+.downDiv {
+	margin-bottom: 0px;
+	width: 100%;
+	margin-left: 100px;
+	margin-top: 52px;
+	flex-direction: column;
+}
+
+.orderA {
+    margin-right: var(--size20); 
+    text-decoration: none; 
+    color: black; 
+    cursor: pointer;
+}
+
+.priceSpan {
+	font-size: 16pt;
+}
+
+.optionSpan {
+	color: #6D6D6D;
+	margin-bottom: 6px;
+}
+
+.line {
+	width: 1140px;
+	margin-left: var(--size20);
+	color: black;
+}
+
+.orderA {
+	margin-left: 850px;
+}
+
+/*-------------------*/
+
+.counter-container {
+	display: inline-flex; 
+    border: 1px solid #A9A9A9;
+    width: 94px;
+    height: 26px;
+    align-items: center;
+    text-align: center;
+}
+
+.counter-button {
+    flex: 1; 
+	cursor: pointer;
+	user-select: none;
+	border-right: 1px solid #A9A9A9; 
+    border-left: 1px solid #A9A9A9;
+}
+
+.counter-value {
+    flex: 1; 
+}
+
+.counter-button:last-child {
+    border-right: none;
+}
+
+/*-------------------*/
 
 

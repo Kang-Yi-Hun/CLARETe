@@ -1,10 +1,12 @@
 package option.domain;
 
 public class OptionVO {
-	int op_num; // ¿É¼Ç¹øÈ£
-	int fk_p_num; // Á¦Ç°°íÀ¯¹øÈ£
-	String op_ml; // ¿ë·®
-	String op_price; // ¿ë·®º°°¡°Ý
+	int op_num; // ï¿½É¼Ç¹ï¿½È£
+	int fk_p_num; // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	String op_ml; // ï¿½ë·®
+	String op_price; // ï¿½ë·®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	
 	public int getOp_num() {
 		return op_num;
 	}

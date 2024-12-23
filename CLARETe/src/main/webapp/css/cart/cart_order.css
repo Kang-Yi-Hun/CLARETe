@@ -1,0 +1,260 @@
+@charset "UTF-8";
+
+:root{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    --size2  : clamp(2px, 0.1042vw, 200px);
+    --size8  : clamp(6px, 0.4167vw, 200px);
+    --size12 : clamp(10px, 0.6250vw, 200px);
+    --size14 : clamp(12px, 0.7292vw, 200px);
+    --size15 : clamp(14px, 0.7813vw, 200px);
+    --size16 : clamp(16px, 0.8333vw, 200px);
+    --size18 : clamp(17px, 0.9375vw, 200px);
+    --size20 : clamp(18px, 1.0417vw, 200px);
+    --size24 : clamp(20px, 1.2500vw, 200px);
+    --size30 : clamp(28px, 1.5625vw, 200px);
+    --size32 : clamp(30px, 1.6667vw, 200px);
+    --size40 : clamp(36px, 2.0833vw, 200px);
+    --size50 : clamp(46px, 2.6042vw, 200px);
+    --size52 : clamp(48px, 2.7083vw, 200px);
+    --size60 : clamp(50px, 3.1250vw, 200px);
+    --size65 : clamp(60px, 3.3854vw, 200px);
+
+    --size70  : clamp(66px, 3.6458vw, 2000px);
+    --size72  : clamp(68px, 3.7500vw, 200px);
+    --size98  : clamp(80px, 5.1042vw, 2000px);
+    --size100 : clamp(80px, 5.2083vw, 2000px);
+    --size120 : clamp(100px, 6.2500vw, 2000px);
+    --size160 : clamp(154px, 8.3333vw, 2000px);
+    --size300 : clamp(280px, 15.6250vw, 2000px);
+    --size400 : clamp(380px, 20.8333vw, 2000px);
+    --size670 : clamp(650px, 34.8958vw, 2000px);
+    --size700 : clamp(680px, 36.4583vw, 3000px);
+    --size930 : clamp(900px, 48.4375vw, 10000px);
+}
+
+
+#all_container {
+	height: auto;
+}
+
+#fistDiv {
+	margin-top: var(--size72);
+	display: flex;
+	flex-direction: column;
+	gap: var(--size40);
+}
+
+#fistDiv > a {
+	margin: auto;
+} 
+
+.cart{
+	font-size: var(--size32);
+}
+
+.step{
+	margin-bottom: var(--size20);
+}
+
+
+#secondDiv {
+	margin-left: var(--size160);
+	margin-right: var(--size160);
+	display: flex;
+	height: auto;
+}
+
+#infoDiv{
+	width: 1136px;
+	height: auto;
+}
+
+
+#memberInfoDiv {
+	margin-top: var(--size72);
+	width: 1136px;
+}
+
+#menu1 {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	padding-bottom: 12px;
+}
+
+#menu2 {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	padding-bottom: 12px;
+}
+
+#menu3 {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	padding-bottom: 12px;
+}
+
+#menu1, #menu2, #menu3 {
+	display: flex;
+	justify-content: space-between;
+}
+
+#memberInfo {
+	height: 82px;
+	display: block;
+	padding-top: 16px;
+}
+
+.triangle {
+	color: #6D6D6D;
+}
+#orderInfoDiv {
+	width: 1136px;
+}
+
+#menu2, #menu3 {
+	margin-top: 20px;
+}
+
+#orderInfo {
+	height: 102px;
+	padding-top: 16px;
+}
+
+#productList {
+	height: auto;
+}
+
+.infoSpan {
+	display: inline-block;
+	width: 80px; 
+    text-align: left;
+}
+
+#selectDelivery {
+	width: 90px;
+	height: 26px;
+	margin-left: 523px;
+	background-color: white;
+	border: solid 1px #A9A9A9;
+	color: black;
+	font-size: 14px;
+}
+
+#productInfo {
+	border-top: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	padding-bottom: 16px;
+	padding-top: 20px;
+	padding-left: 20px;
+	
+	display: flex;
+}
+
+.space {
+	margin-bottom: 6px;	
+}
+
+.perfume {
+	margin-left: 20px;
+}
+
+.option {
+	margin-left: 820px;
+	margin-top: 40px;
+}
+
+.optionSpan {
+	color: #6D6D6D
+}
+
+/*-------------------------------------*/
+
+
+.payment_go_box {
+	width: var(--size400);
+	height: 900px;
+	margin-left: 120px;
+	margin-top: var(--size72);
+}
+
+.payment_info {
+	border: 1px solid #000; 
+	width: var(--size400);
+	height: 260px;
+}
+
+.order_product {
+	width: var(--size120);
+	height: var(--size20);
+	display: block;
+	margin-top: var(--size20);
+	margin-left: var(--size20);
+	margin-bottom: var(--size20);
+}
+
+hr {
+	width: 360px;
+	margin-left: var(--size20);
+}
+
+span.product_amount {
+	margin-left: var(--size20);
+	margin-top: 10px;
+}
+
+span.product_price {
+	margin-right: var(--size20);
+	margin-top: 10px;
+}
+
+span.shipping {
+	margin-top: 5px;
+	margin-left: var(--size20);
+	margin-bottom: 10px;
+}
+
+span.shipping_price {
+	margin-top: 5px;
+	margin-right: var(--size20);
+	margin-bottom: 10px;
+}
+
+span.point {
+	margin-left: var(--size20);
+	margin-bottom: 10px;
+}
+
+.point_price {
+	width: 80px;
+	height: 25px;
+	margin-right: var(--size20);
+}
+
+span.total {
+	margin-left: var(--size20);
+}
+
+span.total_price {
+	margin-right: var(--size20);
+}
+
+button#btn-order {
+	width: var(--size400);
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: var(--size12);
+}

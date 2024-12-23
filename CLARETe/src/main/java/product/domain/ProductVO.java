@@ -1,12 +1,17 @@
 package product.domain;
 
+import java.util.List;
+import java.util.Map;
+
+import option.domain.OptionVO;
+
 public class ProductVO {
 	
 	int p_num;				//제품고유번호
 	String p_season;		//카테고리(계절)
 	String p_name;			//제품명
 	String p_ex;			//제품설명
-	String p_price;			//가격
+	int p_price;			//가격
 	int p_inven;			//재고
 	String p_register;		//제품등록일
 	String p_release;		//발매일
@@ -14,6 +19,26 @@ public class ProductVO {
 	int p_gender;			//성별 향수
 	String p_image;			//상품이미지
 	String p_detail_image;	//상품상세이미지
+	
+	
+	Map<String, String> opMap;
+	
+	private List<OptionVO> opVoList;
+	
+	public List<OptionVO> getOpVoList() {
+		return opVoList;
+	}
+	
+	public void setOpVoList(List<OptionVO> opVoList) {
+		this.opVoList = opVoList;
+	}
+	
+	public Map<String, String> getOpMap() {
+		return opMap;
+	}
+	public void setOpMap(Map<String, String> opMap) {
+		this.opMap = opMap;
+	}
 	public int getP_num() {
 		return p_num;
 	}
@@ -38,11 +63,11 @@ public class ProductVO {
 	public void setP_ex(String p_ex) {
 		this.p_ex = p_ex;
 	}
-	public String getP_price() {
+	public int getP_price() {
 		return p_price;
 	}
-	public void setP_price(String p_price) {
-		this.p_price = p_price;
+	public void setP_price(int i) {
+		this.p_price = i;
 	}
 	public int getP_inven() {
 		return p_inven;

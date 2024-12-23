@@ -22,22 +22,98 @@
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/cart/cart.js"></script>
 
-
 <jsp:include page="../header.jsp"></jsp:include>
 
-<section style="width: 100%; height: 100vh; padding-top: 4.5rem">
+<section style="width: 100%; height: auto; margin-bottom: 100px; padding-top: 4.5rem">
 
 	<div id="all_container">
-		<div>
+		<div id="fistDiv">
 			<a class="cart">장바구니</a>
-			<a>1.장바구니 > 2.주문서 작성 > 3.주문완료</a>
+			<a class="step"><strong>1.장바구니</strong>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;2.주문서 작성&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;3.주문완료</a>
 		</div>	
 		
 		<div id="productList">
-			<div class="cart_container">
-			
+			<div class="cart_container" style="border-top: none; border-bottom: 1px solid black; border-left: none; border-right: none;">
+				
+				<div class="menuDiv" style="border-top: 1px solid black; border-bottom: none; border-left: none; border-right: none;">
+				
+					<a class="a_cart">장바구니 상품</a>
+					<button type="button" class="all">전체선택</button>
+					<button type="button" class="all" id="btn_cancel">전체해제</button>
+				</div>
+				
+				<div class="product">
+					<div class="upDiv">
+						
+						<input type="checkbox">
+							<%-- <img src="<%= ctxPath%>/images/kakao.png" />--%>
+							<div style="width: 64px; height: 64px; background-color: black; "></div>
+							<div class="infoDiv">
+								향수이름
+								<br>
+								32,500
+							</div>
+							<span class="priceSpan">32,500</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6D6D6D" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+							  <line x1="18" y1="6" x2="6" y2="18"></line>
+							  <line x1="6" y1="6" x2="18" y2="18"></line>
+							</svg>
+
+					</div>
+					<div class="downDiv">
+						<span class="optionSpan">-옵션 50ml</span>
+						
+						<div>		
+							<div class="counter-container">
+						        <div class="counter-button" id="decrease">-</div>
+						        <div class="counter-value" id="counter">1</div>
+						        <div class="counter-button" id="increase">+</div>
+						    </div>
+						    <a class="orderA">주문하기<a>
+						</div>
+  
+					</div>
+					
+					
+				</div>
+				
+				
+				<div class="product">
+					<div class="upDiv">
+						
+						<input type="checkbox">
+							<%-- <img src="<%= ctxPath%>/images/kakao.png" />--%>
+							<div style="width: 64px; height: 64px; background-color: black; "></div>
+							<div class="infoDiv">
+								향수이름
+								<br>
+								32,500
+							</div>
+							<span class="priceSpan">32,500</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6D6D6D" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+							  <line x1="18" y1="6" x2="6" y2="18"></line>
+							  <line x1="6" y1="6" x2="18" y2="18"></line>
+							</svg>
+
+					</div>
+					<div class="downDiv">
+						<span class="optionSpan">-옵션 50ml</span>
+						
+						<div>		
+							<div class="counter-container">
+						        <div class="counter-button" id="decrease">-</div>
+						        <div class="counter-value" id="counter">1</div>
+						        <div class="counter-button" id="increase">+</div>
+						    </div>
+						    <a class="orderA">주문하기<a>
+						</div>
+  
+					</div>
+					
+					
+				</div>
+
 			</div>
-			
 			
 			<div class="payment_go_box">
 			
@@ -71,7 +147,17 @@
 
 		</div>
 		
-
+		<div class="totalDiv">
+			<div class="totalA">
+				<a>[배송]</a> <br> <hr class="totalHr">
+				<a>상품구매금액 : </a>
+				<a>76,000</a>
+				<a> + 배송비 0 (무료)</a> <br> <hr class="totalHr">
+				<a>합계 : </a> 
+				<a>76,000</a>
+			</div>	
+		</div>
+			
 	</div>
 
 
