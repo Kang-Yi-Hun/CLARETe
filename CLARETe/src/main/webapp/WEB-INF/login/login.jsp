@@ -36,7 +36,7 @@
 			<div class="options">
 	    		<label><input type="checkbox"> 아이디 기억</label>
 	    		<div class="find-links">
-	        		<a href="#">아이디 찾기</a> | <a href="#">비밀번호 찾기</a>
+	        		<a href="<%= ctxPath%>/member/id_find.cl">아이디 찾기</a> | <a href="<%= ctxPath%>/member/pwd_find_1.cl">비밀번호 찾기</a>
 	    		</div>
 			</div>
 			<button type="submit" class="login-btn" >로그인</button>
