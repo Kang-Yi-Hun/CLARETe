@@ -254,7 +254,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// ���대�� 李얘린
+	// 아이디찾기
 	@Override
 	public String findUserid(Map<String, String> paraMap) throws SQLException {
 		String m_id = null;
@@ -286,7 +286,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 鍮�諛�踰��� 李얘린1
+	// 비밀번호찾기1
 	@Override
 	public boolean isUserExist(Map<String, String> paraMap) throws SQLException {
 		
@@ -317,7 +317,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
-	// 鍮�諛�踰��� 蹂�寃쏀��湲�
+	// 비밀번호 찾기
 	@Override
 	public int pwdUpdate(Map<String, String> paraMap) throws SQLException {
 
@@ -328,7 +328,10 @@ public class MemberDAO_imple implements MemberDAO {
 
 	        String sql = " update tbl_member set m_pwd = ? "
 	        		   + " WHERE m_id = ? ";
-
+	        
+	        System.out.println(paraMap.get("new_m_pwd"));
+	        System.out.println(paraMap.get("m_id"));
+	        
 	        pstmt = conn.prepareStatement(sql);
 
 	        pstmt.setString(1, paraMap.get("new_m_pwd"));
@@ -344,20 +347,22 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 
+	// 회원탈퇴 메소드
 	@Override
 	public int memberDelete(Map<String, String> paraMap) throws SQLException {
 		int result = 0;
-
+		
 	    try {
 	        conn = ds.getConnection();
 
 	        String sql = " update tbl_member set m_status = 0 "
-	        		   + " WHERE m_id = ? ";
+	        			+ " where m_id = ? and m_pwd = ? ";
 
 	        pstmt = conn.prepareStatement(sql);
 
 	        pstmt.setString(1, paraMap.get("m_id"));
-
+	        pstmt.setString(2, paraMap.get("m_pwd"));
+	        
 	        result = pstmt.executeUpdate();
 
 	    } finally {

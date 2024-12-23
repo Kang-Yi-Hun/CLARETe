@@ -23,13 +23,13 @@ public interface MemberDAO {
 	// 濡�洹몄��
 	MemberVO login(Map<String, String> paraMap) throws SQLException;
 
-	// ���대�� 李얘린
+	// 아이디찾기
 	String findUserid(Map<String, String> paraMap) throws SQLException;
 
-	// 鍮�諛�踰��� 李얘린1
+	// 비밀번호찾기1
 	boolean isUserExist(Map<String, String> paraMap) throws SQLException;
 
-	// 鍮�諛�踰��� 蹂�寃쏀��湲�
+	// 비밀번호 찾기
 	int pwdUpdate(Map<String, String> paraMap) throws SQLException;
 
 	// 회원탈퇴하는 메소드

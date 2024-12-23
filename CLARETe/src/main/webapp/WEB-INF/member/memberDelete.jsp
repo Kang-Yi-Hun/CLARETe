@@ -24,8 +24,8 @@ $(document).ready(function(){
 	const method = "${requestScope.method}";
 	
 	
+	
 	console.log(method);
-	console.log("${requestScope.m_id}");
 	
     $("div.find_go").click(function(){
     	goFind();
@@ -36,7 +36,15 @@ $(document).ready(function(){
 
 function goFind() {
 	
-	alert("회원이 정상적으로 탈퇴되었습니다. \n 감사합니다.");
+	const m_pwd = '${sessionScope.loginuser.m_pwd}';
+	console.log(m_pwd);
+	if(m_pwd == $("input:password[name='m_pwd']").val()){
+		alert("회원이 정상적으로 탈퇴되었습니다. \n 감사합니다.");
+	}
+	else {
+		alert("비밀번호가 일치하지 않습니다.");
+		return;
+	}
  		
 	const frm = document.memberDelete;
     frm.action = "<%= ctxPath%>/mypage/memberDelete.cl";
@@ -61,8 +69,8 @@ function goFind() {
 	                <input type="password" name="m_pwd" placeholder="탈퇴하실려면 비밀번호를 입력해주세요" />
 	            </div>
 			
-			<input type="hidden" name="m_id" value="${requestScope.m_id}" />
-	
+			<input type="hidden" name="m_id" value="${sessionScope.loginuser.m_id}" />
+
 	            <div class="find_go">
 	            	<span class="delete">탈퇴하기</span>
 	            </div>

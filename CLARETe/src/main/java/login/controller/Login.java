@@ -48,7 +48,6 @@ public class Login extends AbstractController {
 			MemberVO loginuser = mdao.login(paraMap); 
 			
 			if(loginuser != null) {
-				System.out.println(id + "濡�洹몄�� �깃났");
 				
 				/*
 				 	�ш린�� �대㈃ 肄��� 異�媛�
@@ -56,6 +55,8 @@ public class Login extends AbstractController {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginuser", loginuser);
+				
+				System.out.println(loginuser);
 				
 				/*
 			 		�ш린��鍮�諛�踰��� 蹂�寃� 3媛��� 肄��� 異�媛�

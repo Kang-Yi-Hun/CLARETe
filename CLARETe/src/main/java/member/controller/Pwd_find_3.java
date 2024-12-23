@@ -26,24 +26,29 @@ public class Pwd_find_3 extends AbstractController {
            // "���몃�寃쏀��湲�" 踰��쇱�� �대┃���� 寃쎌��
         	String new_m_pwd = request.getParameter("m_pwd");
         	
+        	System.out.println("확인용 => "+new_m_pwd);
+        	
         	Map<String, String> paraMap = new HashMap<>();
         	paraMap.put("m_id", m_id);
         	paraMap.put("new_m_pwd", new_m_pwd);
         	
-        	int n = 0;
+        	int result = 0;
         	try {
-        	 n = mdao.pwdUpdate(paraMap);
+        		result = mdao.pwdUpdate(paraMap);
         	}catch (SQLException e) {
         		e.printStackTrace();
 			}
         	
-        	request.setAttribute("n", n);
+        	request.setAttribute("result", result);
         	
         	request.setAttribute("m_id", m_id);
         	request.setAttribute("method", method);
         	
+        	System.out.println("확인용 result"+result);
+        	
         } // end of if(post)---------
 		
+        
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/member/pwd_find_3.jsp");
 	}

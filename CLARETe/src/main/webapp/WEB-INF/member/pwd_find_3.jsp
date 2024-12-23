@@ -39,6 +39,9 @@ function goFind() {
 	const pwd  = $("input:password[name='pwd']").val();
     const pwd2 = $("input:password[name='pwd2']").val();
     
+    console.log(pwd);
+    console.log(pwd2);
+    
     if(pwd != pwd2) {
        alert("암호가 일치하지 않습니다.");
        $("input:password[name='pwd']").val("");
