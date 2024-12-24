@@ -17,7 +17,7 @@ public class Pwd_find_3 extends AbstractController {
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
       
-      String m_id = request.getParameter("m_id");
+        String m_id = request.getParameter("m_id");
          
         String method = request.getMethod(); // "GET"      "POST" 
       
@@ -32,25 +32,37 @@ public class Pwd_find_3 extends AbstractController {
            paraMap.put("m_id", m_id);
            paraMap.put("new_m_pwd", new_m_pwd);
            
-           int result = 0;
+           int n = 0;
            try {
-              result = mdao.pwdUpdate(paraMap);
+              n = mdao.pwdUpdate(paraMap);
+              
+              if(n == 1) {
+            	  
+            	  System.out.println("db 성공");
+            	  super.setRedirect(true);
+            	  super.setViewPage(request.getContextPath()+"/login/loginView.cl");
+            	  
+              }
+              
+              
+              
            }catch (SQLException e) {
-              e.printStackTrace();
-         }
+
+           }
            
-           request.setAttribute("result", result);
-           
-           request.setAttribute("m_id", m_id);
-           request.setAttribute("method", method);
-           
-           System.out.println("확인용 result"+result);
            
         } // end of if(post)---------
-      
+        else {
+        	 request.setAttribute("m_id", m_id);
+             request.setAttribute("method", method);
+           
+             
+     	       super.setRedirect(false);
+     	       super.setViewPage("/WEB-INF/member/pwd_find_3.jsp");
+        }
         
-      super.setRedirect(false);
-      super.setViewPage("/WEB-INF/member/pwd_find_3.jsp");
+       
+        
    }
 
 }

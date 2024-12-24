@@ -15,7 +15,7 @@ public class VerifyCertification extends AbstractController {
 		if("post".equalsIgnoreCase(method)) {
 			
 			String userCertificationCode = request.getParameter("userCertificationCode");
-			String userid = request.getParameter("userid");
+			String m_id = request.getParameter("m_id");
 			
 			HttpSession session = request.getSession(); // 세션불러오기
 			String certification_code = (String)(session.getAttribute("certification_code"));
@@ -25,11 +25,11 @@ public class VerifyCertification extends AbstractController {
 			
 			if(certification_code.equals(userCertificationCode)) {
 				message = "인증성공 되었습니다.";
-				loc = request.getContextPath()+"/login/pwdUpdateEnd.up?userid="+userid;
+				loc = request.getContextPath()+"/member/pwd_find_3.cl="+m_id;
 			}
 			else {
 				message = "발급된 인증코드가 아닙니다.\\n인증코드를 다시 발급받으세요!!";
-				loc = request.getContextPath()+"/login/pwdFind.up";
+				loc = request.getContextPath()+"/member/pwd_find_1.cl";
 			}
 			request.setAttribute("message", message);
 			request.setAttribute("loc", loc);

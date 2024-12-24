@@ -50,7 +50,7 @@ function goFind() {
        alert("비밀번호 변경으로 이동합니다.");
        const frm = document.pwdFindFrm;
         frm.action = "<%= ctxPath%>/member/pwd_find_3.cl";
-        frm.method = "post";
+        frm.method = "get";
         frm.submit();
    }
    else {

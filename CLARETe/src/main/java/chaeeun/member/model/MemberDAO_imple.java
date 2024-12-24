@@ -292,6 +292,7 @@ public class MemberDAO_imple implements MemberDAO {
 				member.setM_detail_address(rs.getString("m_detail_address"));
 				member.setM_extra(rs.getString("m_extra"));
 
+				member.setM_idle(rs.getInt("m_idle")); 
 			}
 		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -374,15 +375,15 @@ public class MemberDAO_imple implements MemberDAO {
 	       try {
 	           conn = ds.getConnection();
 
-	           String sql = " update tbl_member set m_pwd = ? "
-	                    + " WHERE m_id = ? ";
+	           String sql = " update tbl_member set m_pwd = ?, m_lastpwd = sysdate "
+	                    + " where m_id = ? ";
 	           
 	           System.out.println(paraMap.get("new_m_pwd"));
 	           System.out.println(paraMap.get("m_id"));
 	           
 	           pstmt = conn.prepareStatement(sql);
 
-	           pstmt.setString(1, paraMap.get("new_m_pwd"));
+	           pstmt.setString(1, Sha256.encrypt(paraMap.get("new_m_pwd")));
 	           pstmt.setString(2, paraMap.get("m_id"));
 
 	           result = pstmt.executeUpdate();

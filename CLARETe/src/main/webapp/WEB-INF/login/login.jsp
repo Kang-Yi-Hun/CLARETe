@@ -25,8 +25,7 @@
 
 
 <%-- 로그인 폼 --%>
-<c:if test="${empty sessionScope.loginuser}">
-
+<c:if test="${empty sessionScope.loginuser}"> 
 <div class="login-container">
 	<h2>LOGO</h2>
 		<h4>로그인</h4>
@@ -51,5 +50,5 @@
     </button>
 </div>
 
-</c:if>    
+</c:if> 
 

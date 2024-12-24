@@ -94,7 +94,7 @@ public class Login extends AbstractController {
 				} else { // 비밀번호를 변경한지 3개월 미만인 경우
 				
 					super.setRedirect(true);
-					super.setViewPage(request.getContextPath()+"/index.up");
+					super.setViewPage(request.getContextPath()+"/index.cl");
 				}
 				
 				

@@ -13,7 +13,7 @@ public class Pwd_find_2 extends AbstractController {
         String method = request.getMethod(); // "GET" 또는 "POST"
 
         String m_id = request.getParameter("m_id");
-        System.out.println("제발"+m_id);
+        
         // 세션불러오기
         HttpSession session = request.getSession();
      //   System.out.println("~~~~~~~~~~~~~~~~~" + session.getAttribute("certification_code"));
