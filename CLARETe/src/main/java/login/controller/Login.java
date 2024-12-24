@@ -61,7 +61,7 @@ public class Login extends AbstractController {
 					// 휴면계정이면
 					
 					String message = "로그인을 한지 1년이 지나서 휴면상태로 되었습니다.\\n휴면을 풀어주는 페이지로 이동합니다!!";
-					String loc = request.getContextPath()+"/index.cl";		// 휴면풀어주는 페이지 만들어야 해요
+					String loc = request.getContextPath()+"/member/idle.cl";		// 휴면풀어주는 페이지 만들어야 해요
 				
 					request.setAttribute("message", message);
 					request.setAttribute("loc", loc);

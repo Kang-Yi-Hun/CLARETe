@@ -57,8 +57,8 @@ public class Pwd_find_3 extends AbstractController {
              request.setAttribute("method", method);
            
              
-     	       super.setRedirect(false);
-     	       super.setViewPage("/WEB-INF/member/pwd_find_3.jsp");
+     	     super.setRedirect(false);
+     	     super.setViewPage("/WEB-INF/member/pwd_find_3.jsp");
         }
         
        
