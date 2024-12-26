@@ -52,7 +52,7 @@
      
      $('input:text[name="m_email"]').on('keyup', function(e){
         if(e.keyCode == 13){
-           goFind();  
+           goFind();   
         }
      }); // end of $('input:text[name="m_email"]').on('keyup', function(e){})----------
      
@@ -81,12 +81,23 @@
        return; // 종료
       }    
       
+      if(m_name == "${requestScope.m_name}"){
+    	  alert("성공");
+      }
+      else {
+    	  alert("실패");
+    	  return;
+      }
+    	  
+      
       const frm = document.idFindFrm;
       frm.action = "<%= ctxPath%>/member/idle.cl";
       frm.method = "post";
       frm.submit();
       $("div.find_go > span.check").html("");
       $("input:text[name='certification']").show();
+      
+      
   } // end of function goFind() {})---------------- 
   
 </script>

@@ -34,4 +34,7 @@ public interface MemberDAO {
 
    // 회원탈퇴하는   메소드
    int memberDelete(Map<String, String> paraMap) throws SQLException;
+
+   // 휴면해제(전화번호랑 일치하는 회원명이 있는지)
+   int checkMobileName(Map<String, String> paraMap) throws SQLException;
 }

@@ -378,9 +378,6 @@ public class MemberDAO_imple implements MemberDAO {
 	           String sql = " update tbl_member set m_pwd = ?, m_lastpwd = sysdate "
 	                    + " where m_id = ? ";
 	           
-	           System.out.println(paraMap.get("new_m_pwd"));
-	           System.out.println(paraMap.get("m_id"));
-	           
 	           pstmt = conn.prepareStatement(sql);
 
 	           pstmt.setString(1, Sha256.encrypt(paraMap.get("new_m_pwd")));
@@ -420,5 +417,50 @@ public class MemberDAO_imple implements MemberDAO {
 
 	       return result;
 	   }
+
+	// 휴면해제(전화번호랑 일치하는 회원명이 있는지)
+	@Override
+	public int checkMobileName(Map<String, String> paraMap) throws SQLException {
+		
+		int result = 0;
+		MemberVO mvo = new MemberVO();
+		try {
+			conn = ds.getConnection();
+			
+			
+			String sql = " select m_id, m_name, m_mobile"
+					   + " from tbl_member"
+					   + " where m_name = ? and m_mobile = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("m_name"));
+        	pstmt.setString(2, aes.encrypt(paraMap.get("m_mobile")));
+            
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+            	
+            	mvo.setM_name(rs.getString("m_name"));
+            	mvo.setM_mobile(rs.getString("m_mobile"));
+            	
+            	sql = " update tbl_member set m_idle = 1 "
+            			+ " where m_name = ? and m_mobile = ? ";
+            	
+            	
+            	pstmt.setString(1, paraMap.get("m_name"));
+            	pstmt.setString(2, aes.encrypt(paraMap.get("m_mobile")));
+            	
+            	result = pstmt.executeUpdate();
+            }
+			
+			
+		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
 
 }
