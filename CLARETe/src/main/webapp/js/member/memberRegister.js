@@ -9,7 +9,7 @@ $(document).ready(function() {
 	// "아이디" input 태그 포커스 벗어나면 blur 이벤트 처리
 	$("input#id").blur((e) => {
 		
-		const regExp_id = /^[a-zA-Z][a-zA-Z0-9]{5,15}$/;
+		const regExp_id = /^[a-zA-Z]{5,15}$/;
 		const bool = regExp_id.test($(e.target).val());
 
 		if (!bool) {

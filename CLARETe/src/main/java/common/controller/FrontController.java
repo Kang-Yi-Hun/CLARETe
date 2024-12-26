@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 		description = "사용자가 웹에서 *.cl 을 했을 경우 이 서블릿이 응답을 해주도록 한다.",
 		urlPatterns = {"*.cl"},
 		initParams = { 
-				@WebInitParam(name = "propertyConfig", value = "C:/git/CLARETe/CLARETe/src/main/webapp/WEB-INF/Command.properties", description = "*.cl 에 대한 클래스의 매핑파일")}) 
+				@WebInitParam(name = "propertyConfig", value = "C:/Users/user/git/CLARETe/CLARETe/src/main/webapp/WEB-INF/Command.properties", description = "*.cl 에 대한 클래스의 매핑파일")}) 
 
 public class FrontController extends HttpServlet {
 

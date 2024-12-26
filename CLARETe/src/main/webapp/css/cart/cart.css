@@ -245,13 +245,6 @@ input[type="checkbox"] {
 	flex-direction: column;
 }
 
-.orderA {
-    margin-right: var(--size20); 
-    text-decoration: none; 
-    color: black; 
-    cursor: pointer;
-}
-
 .priceSpan {
 	font-size: 16pt;
 }

@@ -33,7 +33,7 @@
                <input type="text" name="id" id="id" class="register-input requiredInfo" placeholder="아이디를 입력해주세요" />
                <input type="button" id="idCheck" value="중복확인" onclick="duplicateId()" />
 			   <span id="idcheckResult"></span>
-               <span class="error">6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합하세요.</span>
+               <span class="error">5자 이상 16자 이하의 영문을 입력해주세요.</span>
             </div>
             
             

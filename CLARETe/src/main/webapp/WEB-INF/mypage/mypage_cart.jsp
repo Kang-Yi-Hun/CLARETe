@@ -106,7 +106,7 @@
         </div>
         <div class="cartbox">
             <div>
-                <div class="cartgo">모두 구매하기</div>
+                <div class="cartgo"><a href="<%= ctxPath%>/cart/cart.cl">모두 구매하기</a></div>
             </div>
         </div>
 		<%-- =============================================== --%>
