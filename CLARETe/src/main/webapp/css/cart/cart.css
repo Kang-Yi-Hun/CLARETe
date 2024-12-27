@@ -140,6 +140,11 @@ button#btn-order {
     margin-top: var(--size12);
 }
 
+button#btn-order > a {
+	color: #fff;
+	text-decoration-line : none;
+}
+
 .menuDiv {
 	display: flex;
 	height: 70px;

@@ -19,8 +19,6 @@ public class Cart extends AbstractController {
 		HttpSession session = request.getSession();
 		MemberVO login_id = (MemberVO) session.getAttribute("loginuser");
 		
-		System.out.println("ddddddddddddddddddd" + login_id.getM_id());
-		System.out.println("ddddddddddddddddddd" + login_id.getM_mobile());
 		
 	    if (login_id.getM_id() == null) {
 	    	
@@ -32,8 +30,6 @@ public class Cart extends AbstractController {
 	    	
 	    	CartDAO cdao = new CartDAO_imple();
 	    	List<CartVO> cartList = cdao.selectCart(login_id.getM_id());
-	    	
-	    	System.out.println("우하하하하하하하하" + cartList.size());	// 장바구니 개수 잘 받아옴
 	    	
 	    	request.setAttribute("cartList", cartList);
 	    	
