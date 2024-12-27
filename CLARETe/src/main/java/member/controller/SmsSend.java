@@ -1,12 +1,14 @@
 package member.controller;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import org.json.simple.JSONObject;
 
 import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import net.nurigo.java_sdk.api.Message;
 
 public class SmsSend extends AbstractController {
@@ -27,21 +29,45 @@ public class SmsSend extends AbstractController {
 		// net.nurigo.java_sdk.api.Message 임.
 		// 먼저 다운 받은 javaSDK-2.2.jar 와 json-simple-1.1.1.jar 를 /MyMVC/src/main/webapp/WEB-INF/lib/ 안에 넣어서 build 시켜야 함.
 
-		String mobile = request.getParameter("mobile");
-	    String smsContent = request.getParameter("smsContent");
+		String m_mobile = request.getParameter("m_mobile");
+		
+		Random rnd = new Random();
+	    String certification_code = "";
 
 		// == 4개 파라미터(to, from, type, text)는 필수사항이다. ==
 		HashMap<String, String> paraMap = new HashMap<>();
-		paraMap.put("to", mobile); // 수신번호
+		paraMap.put("to", m_mobile); // 수신번호
 		paraMap.put("from", "01072428801"); // 발신번호
 		// 2020년 10월 16일 이후로 발신번호 사전등록제로 인해 등록된 발신번호로만 문자를 보내실 수 있습니다
 		paraMap.put("type", "SMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
-		paraMap.put("text", smsContent); // 문자내용
-		
-		String datetime = request.getParameter("datetime");
-		if (datetime != null) {
-			paraMap.put("datetime", datetime); // 예약일자및시간
+		char randchar = ' ';
+		for(int i=0; i<5; i++) {
+		/*
+			min 부터 max 사이의 값으로 랜덤한 정수를 얻으려면 
+            int rndnum = rnd.nextInt(max - min + 1) + min;
+        */
+		randchar = (char)(rnd.nextInt('z' - 'a' + 1) + 'a');
+		certification_code += randchar;
 		}
+		
+		int randnum = 0;
+		for(int i=0; i<7; i++) {
+		/*
+			min 부터 max 사이의 값으로 랜덤한 정수를 얻으려면 
+            int rndnum = rnd.nextInt(max - min + 1) + min;
+            	숫자 0부터 9까지 랜덤하게 1개 만든다.
+        */
+		randnum = (int)(rnd.nextInt(9 - 0 + 1) + 0);
+		certification_code += randnum;
+		}
+		
+		paraMap.put("text", certification_code); // 인증번호
+		// 인증키는 영문소문자 5글자 + 숫자 7글자로 만들겠습니다.
+		System.out.println(certification_code);
+		// 세션불러오기
+		HttpSession session = request.getSession();
+		session.setAttribute("certification_code", certification_code);
+		// 발급한 인증코드를 세션에 저장시킴.
 		
 		paraMap.put("app_version", "JAVA SDK v2.2"); // application name and version
 	    

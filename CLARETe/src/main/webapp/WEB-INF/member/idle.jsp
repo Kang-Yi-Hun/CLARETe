@@ -18,7 +18,6 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-     $("div.find_go > span.check").html("확인");
      const method = "${requestScope.method}";
      
      console.log("~~~확인용 method : "+method);
@@ -28,34 +27,54 @@
      */
      
      if(method == "GET"){
-        $('div.find_result_contants').hide();
-        $("a.close").hide();
-        $("input:text[name='certification']").hide();
-        
+        $("div.find_go2").hide();
+        $("div.Certification_number").hide();
      }
      
      if(method == "POST"){
-        $("div.find_go > span.check").html("");
-        $('input:text[name="m_name"]').val("${requestScope.m_name}");
-        $('input:text[name="m_mobile"]').val("${requestScope.m_mobile}");
+        $("div.find_go").hide();
+//        $('input:text[name="m_name"]').val("${requestScope.m_name}");
+//        $('input:text[name="m_mobile"]').val("${requestScope.m_mobile}");
         $("input:text[name='m_name']").hide();
         $("input:text[name='m_mobile']").hide();
+        $("div.Certification_number").show();
         
      }
      
      
      $('div.find_go').click(function(){
         goFind();
-        
-        
-     }); // end of $('button.btn-success').click(function(){})----------- 
+ 
+        dataObj = {"mobile":m_mobile,
+			  	 "certification_code":"${sessionScope.certification_code}"};
+  	  
+	   $.ajax({
+	 	  url:"${pageContext.request.contextPath}/member/smsSend.cl",
+	 	  type:"get",
+	 	  data:dataObj,
+	 	  dataType: "json",
+	 	  success:function(json) { 
+	           
+	           if(json.success_count == 1) {
+	              alert("인증번호가 전송되었습니다.!!");
+	           }
+	           else if(json.error_count != 0) {
+	         	  alert("인증번호 발송 실패!!");
+	           }
+	      },
+         error: function(request, status, error) {
+          	alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	      }
+	   });
+     console.log("${sessionScope.certification_code}");
      
-     $('input:text[name="m_email"]').on('keyup', function(e){
-        if(e.keyCode == 13){
-           goFind();   
-        }
-     }); // end of $('input:text[name="m_email"]').on('keyup', function(e){})----------
+     }); // end of $('div.find_go').click(function(){})
      
+     $("div.find_go2").click(function(){
+    	
+    	 goCertification();
+    	 
+     }); // end of $('div.find_go2').click(function(){})
      
   }); // end of $(document).ready(function(){})--------------- 
   
@@ -74,31 +93,39 @@
       // 이메일 정규표현식 객체 생성 
          
       const bool = regExp_m_mobile.test(m_mobile);
- 
+ 	  
       if(!bool) {
          // 전화번호가 정규표현식에 위배된 경우
          alert("전화번호를 올바르게 입력하세요!!");
        return; // 종료
       }    
-      
-      if(m_name == "${requestScope.m_name}"){
-    	  alert("성공");
-      }
-      else {
-    	  alert("실패");
-    	  return;
-      }
-    	  
+	  
       
       const frm = document.idFindFrm;
       frm.action = "<%= ctxPath%>/member/idle.cl";
       frm.method = "post";
       frm.submit();
-      $("div.find_go > span.check").html("");
-      $("input:text[name='certification']").show();
-      
+      $("div.find_go").hide();
+      $("div.find_go2").show();
       
   } // end of function goFind() {})---------------- 
+  
+  function goCertification() {
+	  
+	  // alert("테스트");
+	  const value = $("input:text[name='certification']").val();
+	  // console.log(value);
+	  
+	  if(value == "${sessionScope.certification_code}") {
+		  alert("인증번호 일치");
+	  }
+	  const frm = document.mobileFrm;
+      frm.action = "<%= ctxPath%>/member/idle.cl";
+      frm.method = "post";
+      frm.submit();
+      $("div.find_go").hide();
+      $("div.find_go2").show();
+  } // end of function goCertification() 
   
 </script>
 
@@ -122,10 +149,17 @@
                </div>
    
                <div class="find_go">
-                   <span class="check"></span><a style="color: white;" class="close" href="<%= ctxPath%>/login/loginView.cl">인증번호확인</a>
+                   확인
                </div>
+               
            </div>
        </div>
+</form>
+
+<form name="mobileFrm">
+	<div class="find_go2" style="width: 333px; height: 48px; margin: 0 auto; margin-top: 28px;">
+	  인증번호확인
+	</div>
 </form>
 
 

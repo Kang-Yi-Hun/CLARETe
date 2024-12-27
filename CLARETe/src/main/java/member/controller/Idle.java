@@ -18,15 +18,21 @@ public class Idle extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+
 		String method = request.getMethod(); // "GET" 또는 "POST"
+		
+		System.out.println("휴면 해제 페이지");
+		
+		request.setAttribute("method", method);
+		super.setRedirect(false);
+		super.setViewPage("/WEB-INF/member/idle.jsp");
 		
 		if("POST".equalsIgnoreCase(method)) {
 			
+			System.out.println("post임~~~~");
+			
 			String m_name = request.getParameter("m_name");
 			String m_mobile = request.getParameter("m_mobile");
-			
-			System.out.println(m_name);
-			System.out.println(m_mobile);
 			
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("m_name", m_name);
@@ -35,13 +41,14 @@ public class Idle extends AbstractController {
 			int n = mdao.checkMobileName(paraMap);
 			
 			if(n == 1) {
+							
 				request.setAttribute("n", n);
 				request.setAttribute("m_name", m_name);
 				request.setAttribute("m_mobile", m_mobile);
 				
-				String message = "휴면 해제가 완료되었습니다!!";
-		         
-		        request.setAttribute("message", message);
+			//	String message = "인증번호가 발송되었습니다.";
+		    //    request.setAttribute("message", message);
+		        
 			}
 			else {
 				String message = "존재하지 않는 회원입니다.";
@@ -53,12 +60,11 @@ public class Idle extends AbstractController {
 		        super.setRedirect(false); 
 		        super.setViewPage("/WEB-INF/msg.jsp");
 			}
-		} 
+		}
+		
+
 		
 		
-		request.setAttribute("method", method);
-		super.setRedirect(false);
-		super.setViewPage("/WEB-INF/member/idle.jsp");
 
 		
 		

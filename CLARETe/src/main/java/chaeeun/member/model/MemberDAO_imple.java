@@ -422,14 +422,16 @@ public class MemberDAO_imple implements MemberDAO {
 	@Override
 	public int checkMobileName(Map<String, String> paraMap) throws SQLException {
 		
+		System.out.println("imple 실행됨");
+		
 		int result = 0;
-		MemberVO mvo = new MemberVO();
+		
 		try {
 			conn = ds.getConnection();
 			
 			
 			String sql = " select m_id, m_name, m_mobile"
-					   + " from tbl_member"
+					   + " from tbl_member "
 					   + " where m_name = ? and m_mobile = ? ";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -440,6 +442,7 @@ public class MemberDAO_imple implements MemberDAO {
             
             if(rs.next()) {
             	
+            	/*
             	mvo.setM_name(rs.getString("m_name"));
             	mvo.setM_mobile(rs.getString("m_mobile"));
             	
@@ -450,7 +453,10 @@ public class MemberDAO_imple implements MemberDAO {
             	pstmt.setString(1, paraMap.get("m_name"));
             	pstmt.setString(2, aes.encrypt(paraMap.get("m_mobile")));
             	
-            	result = pstmt.executeUpdate();
+            	result = pstmt.executeUpdate();*/
+            	
+            	result = 1;
+            	
             }
 			
 			
