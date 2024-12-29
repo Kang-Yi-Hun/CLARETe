@@ -19,21 +19,20 @@ public class Idle extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		String method = request.getMethod(); // "GET" ë˜ëŠ” "POST"
+		String method = request.getMethod(); // "GET" ¶Ç´Â "POST"
 		
-		System.out.println("íœ´ë©´ í•´ì œ í˜ì´ì§€");
+		System.out.println("ÈŞ¸é ÇØÁ¦ ÆäÀÌÁö");
 		
 		request.setAttribute("method", method);
-		super.setRedirect(false);
-		super.setViewPage("/WEB-INF/member/idle.jsp");
+		
 		
 		if("POST".equalsIgnoreCase(method)) {
 			
-			System.out.println("postì„~~~~");
+			System.out.println("postÀÓ~~~~");
 			
 			String m_name = request.getParameter("m_name");
 			String m_mobile = request.getParameter("m_mobile");
-			
+			String m_idle = request.getParameter("m_idle");
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("m_name", m_name);
 			paraMap.put("m_mobile", m_mobile);
@@ -42,16 +41,16 @@ public class Idle extends AbstractController {
 			
 			if(n == 1) {
 							
-				request.setAttribute("n", n);
+				paraMap.put("m_idle", m_idle);
+				request.setAttribute("m_idle", m_idle);
 				request.setAttribute("m_name", m_name);
 				request.setAttribute("m_mobile", m_mobile);
-				
-			//	String message = "ì¸ì¦ë²ˆí˜¸ê°€ ë°œì†¡ë˜ì—ˆìŠµë‹ˆë‹¤.";
-		    //    request.setAttribute("message", message);
-		        
+			//	String message = "ÀÎÁõ¹øÈ£°¡ ¹ß¼ÛµÇ¾ú½À´Ï´Ù.";
+		    //  request.setAttribute("message", message);
+		        System.out.println("ÈŞ´ë¹øÈ£" + m_mobile);
 			}
 			else {
-				String message = "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íšŒì›ì…ë‹ˆë‹¤.";
+				String message = "Á¸ÀçÇÏÁö ¾Ê´Â È¸¿øÀÔ´Ï´Ù.";
 		        String loc = "javascript:history.back()";
 		         
 		        request.setAttribute("message", message);
@@ -61,14 +60,8 @@ public class Idle extends AbstractController {
 		        super.setViewPage("/WEB-INF/msg.jsp");
 			}
 		}
-		
-
-		
-		
-
-		
-		
-	    
+		super.setRedirect(false);
+		super.setViewPage("/WEB-INF/member/idle.jsp");
 	}
 
 }

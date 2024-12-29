@@ -22,14 +22,14 @@ import util.security.Sha256;
 
 public class MemberDAO_imple implements MemberDAO {
 
-	private DataSource ds; // DataSource ds ëŠ” ì•„íŒŒì¹˜í†°ìº£ì´ ì œê³µí•˜ëŠ” DBCP(DB Connection Pool)ì´ë‹¤.
+	private DataSource ds; // DataSource ds ´Â ¾ÆÆÄÄ¡ÅèÄ¹ÀÌ Á¦°øÇÏ´Â DBCP(DB Connection Pool)ÀÌ´Ù.
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
 	private AES256 aes;
 
-	// ìƒì„±ì
+	// »ı¼ºÀÚ
 	public MemberDAO_imple() {
 
 		try {
@@ -38,7 +38,7 @@ public class MemberDAO_imple implements MemberDAO {
 			ds = (DataSource) envContext.lookup("jdbc/semioracle");
 
 			aes = new AES256(SecretMyKey.KEY);
-			// SecretMyKey.KEY ì€ ìš°ë¦¬ê°€ ë§Œë“  ì•”í˜¸í™”/ë³µí˜¸í™” í‚¤ì´ë‹¤.
+			// SecretMyKey.KEY Àº ¿ì¸®°¡ ¸¸µç ¾ÏÈ£È­/º¹È£È­ Å°ÀÌ´Ù.
 			//
 
 		} catch (NamingException e) {
@@ -48,7 +48,7 @@ public class MemberDAO_imple implements MemberDAO {
 		}
 	}
 
-	// ì‚¬ìš©í•œ ìì›ì„ ë°˜ë‚©í•˜ëŠ” close() ë©”ì†Œë“œ ìƒì„±í•˜ê¸°
+	// »ç¿ëÇÑ ÀÚ¿øÀ» ¹İ³³ÇÏ´Â close() ¸Ş¼Òµå »ı¼ºÇÏ±â
 	private void close() {
 		try {
 			if (rs != null) {
@@ -68,7 +68,7 @@ public class MemberDAO_imple implements MemberDAO {
 		}
 	}// end of private void close()---------------
 
-	// ëª¨ë“  íšŒì›ì„ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
+	// ¸ğµç È¸¿øÀ» Á¶È¸ÇÏ´Â ¸Ş¼Òµå
 	@Override
 	public List<MemberVO> SelectAll_member() throws SQLException {
 
@@ -119,7 +119,7 @@ public class MemberDAO_imple implements MemberDAO {
 	}// end of public boolean idDuplicateCheck(String userid) throws
 		// SQLException------
 
-	// íšŒì›ê°€ì…
+	// È¸¿ø°¡ÀÔ
 	@Override
 	public int registerMember(MemberVO member) throws SQLException {
 
@@ -156,7 +156,7 @@ public class MemberDAO_imple implements MemberDAO {
 		return result;
 	}
 
-	// ì•„ì´ë”” ì¤‘ë³µì²´í¬ (ì¤‘ë³µì´ë©´ true ë¦¬í„´, ì¤‘ë³µ ì•„ë‹ˆë©´ false ë¦¬í„´)
+	// ¾ÆÀÌµğ Áßº¹Ã¼Å© (Áßº¹ÀÌ¸é true ¸®ÅÏ, Áßº¹ ¾Æ´Ï¸é false ¸®ÅÏ)
 	@Override
 	public boolean idDuplicateCheck(String m_id) throws SQLException {
 
@@ -172,8 +172,8 @@ public class MemberDAO_imple implements MemberDAO {
 
 			rs = pstmt.executeQuery();
 
-			isExists = rs.next(); // í–‰ì´ ìˆìœ¼ë©´(ì¤‘ë³µëœ userid) true,
-									// í–‰ì´ ì—†ìœ¼ë©´(ì‚¬ìš©ê°€ëŠ¥í•œ userid) false
+			isExists = rs.next(); // ÇàÀÌ ÀÖÀ¸¸é(Áßº¹µÈ userid) true,
+									// ÇàÀÌ ¾øÀ¸¸é(»ç¿ë°¡´ÉÇÑ userid) false
 
 		} finally {
 			close();
@@ -182,7 +182,7 @@ public class MemberDAO_imple implements MemberDAO {
 		return isExists;
 	}
 
-	// ì´ë©”ì¼ ì¤‘ë³µê²€ì‚¬
+	// ÀÌ¸ŞÀÏ Áßº¹°Ë»ç
 	@Override
 	public boolean emailDuplicateCheck(String email) throws SQLException {
 
@@ -198,8 +198,8 @@ public class MemberDAO_imple implements MemberDAO {
 
 			rs = pstmt.executeQuery();
 
-			isExists = rs.next(); // í–‰ì´ ìˆìœ¼ë©´(ì¤‘ë³µëœ userid) true,
-									// í–‰ì´ ì—†ìœ¼ë©´(ì‚¬ìš©ê°€ëŠ¥í•œ userid) false
+			isExists = rs.next(); // ÇàÀÌ ÀÖÀ¸¸é(Áßº¹µÈ userid) true,
+									// ÇàÀÌ ¾øÀ¸¸é(»ç¿ë°¡´ÉÇÑ userid) false
 
 		} catch (GeneralSecurityException | UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -211,7 +211,7 @@ public class MemberDAO_imple implements MemberDAO {
 
 	}
 
-	// ë¡œê·¸ì¸
+	// ·Î±×ÀÎ
 	@Override
 	public MemberVO login(Map<String, String> paraMap) throws SQLException {
 
@@ -238,9 +238,9 @@ public class MemberDAO_imple implements MemberDAO {
 
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, paraMap.get("id")); // m_id í‚¤ í™•ì¸
-			pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd"))); // ì•”í˜¸í™”ëœ ë¹„ë°€ë²ˆí˜¸
-			pstmt.setString(3, paraMap.get("id")); // m_id í‚¤ í™•ì¸
+			pstmt.setString(1, paraMap.get("id")); // m_id Å° È®ÀÎ
+			pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd"))); // ¾ÏÈ£È­µÈ ºñ¹Ğ¹øÈ£
+			pstmt.setString(3, paraMap.get("id")); // m_id Å° È®ÀÎ
 			
 			rs = pstmt.executeQuery();
 
@@ -252,7 +252,7 @@ public class MemberDAO_imple implements MemberDAO {
 				member.setM_point(rs.getInt("m_point"));
 				
 						
-				// ë§ˆì§€ë§‰ ë¡œê·¸ì¸ 1ë…„ ì´ìƒì´ë©´ íœ´ë©´
+				// ¸¶Áö¸· ·Î±×ÀÎ 1³â ÀÌ»óÀÌ¸é ÈŞ¸é
 				if (rs.getInt("pwdchangegap") >= 12) {
 					member.setM_idle(0);
 
@@ -266,7 +266,7 @@ public class MemberDAO_imple implements MemberDAO {
 					}
 				}
 
-				// íœ´ë©´ ì•„ë‹Œ íšŒì›ë§Œ tbl_logì— insert
+				// ÈŞ¸é ¾Æ´Ñ È¸¿ø¸¸ tbl_log¿¡ insert
 				if (rs.getInt("lastlogingap") < 12) {
 
 					sql = " insert into tbl_log(l_num, fk_m_id, l_ip) " + " values(seq_log.nextval, ?, ?) ";
@@ -278,10 +278,10 @@ public class MemberDAO_imple implements MemberDAO {
 					pstmt.executeUpdate();
 
 					if (rs.getInt("pwdchangegap") >= 3) {
-						// ë§ˆì§€ë§‰ìœ¼ë¡œ ì•”í˜¸ë¥¼ ë³€ê²½í•œ ë‚ ì§œê°€ í˜„ì¬ì‹œê°ìœ¼ë¡œ ë¶€í„° 3ê°œì›”ì´ ì§€ë‚¬ìœ¼ë©´ true
-						// ë§ˆì§€ë§‰ìœ¼ë¡œ ì•”í˜¸ë¥¼ ë³€ê²½í•œ ë‚ ì§œê°€ í˜„ì¬ì‹œê°ìœ¼ë¡œ ë¶€í„° 3ê°œì›”ì´ ì§€ë‚˜ì§€ ì•Šì•˜ìœ¼ë©´ false
+						// ¸¶Áö¸·À¸·Î ¾ÏÈ£¸¦ º¯°æÇÑ ³¯Â¥°¡ ÇöÀç½Ã°¢À¸·Î ºÎÅÍ 3°³¿ùÀÌ Áö³µÀ¸¸é true
+						// ¸¶Áö¸·À¸·Î ¾ÏÈ£¸¦ º¯°æÇÑ ³¯Â¥°¡ ÇöÀç½Ã°¢À¸·Î ºÎÅÍ 3°³¿ùÀÌ Áö³ªÁö ¾Ê¾ÒÀ¸¸é false
 
-						member.setRequirePwdChange(true); // ë¡œê·¸ì¸ì‹œ ì•”í˜¸ë¥¼ ë³€ê²½í•´ë¼ëŠ” alert ë¥¼ ë„ìš°ë„ë¡ í• ë•Œ ì‚¬ìš©í•œë‹¤.
+						member.setRequirePwdChange(true); // ·Î±×ÀÎ½Ã ¾ÏÈ£¸¦ º¯°æÇØ¶ó´Â alert ¸¦ ¶ç¿ìµµ·Ï ÇÒ¶§ »ç¿ëÇÑ´Ù.
 					}
 				}
 				
@@ -303,7 +303,7 @@ public class MemberDAO_imple implements MemberDAO {
 		return member;
 	}
 	
-	// ì•„ì´ë””ì°¾ê¸°
+	// ¾ÆÀÌµğÃ£±â
 	   @Override
 	   public String findUserid(Map<String, String> paraMap) throws SQLException {
 	      String m_id = null;
@@ -335,7 +335,7 @@ public class MemberDAO_imple implements MemberDAO {
 	   }
 
 
-	   // ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°1
+	   // ºñ¹Ğ¹øÈ£Ã£±â1
 	   @Override
 	   public boolean isUserExist(Map<String, String> paraMap) throws SQLException {
 	      
@@ -366,7 +366,7 @@ public class MemberDAO_imple implements MemberDAO {
 	   }
 
 
-	   // ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
+	   // ºñ¹Ğ¹øÈ£ Ã£±â
 	   @Override
 	   public int pwdUpdate(Map<String, String> paraMap) throws SQLException {
 
@@ -393,7 +393,7 @@ public class MemberDAO_imple implements MemberDAO {
 	   }
 
 
-	   // íšŒì›íƒˆí‡´ ë©”ì†Œë“œ
+	   // È¸¿øÅ»Åğ ¸Ş¼Òµå
 	   @Override
 	   public int memberDelete(Map<String, String> paraMap) throws SQLException {
 	      int result = 0;
@@ -418,11 +418,11 @@ public class MemberDAO_imple implements MemberDAO {
 	       return result;
 	   }
 
-	// íœ´ë©´í•´ì œ(ì „í™”ë²ˆí˜¸ë‘ ì¼ì¹˜í•˜ëŠ” íšŒì›ëª…ì´ ìˆëŠ”ì§€)
+	// ÈŞ¸éÇØÁ¦(ÀüÈ­¹øÈ£¶û ÀÏÄ¡ÇÏ´Â È¸¿ø¸íÀÌ ÀÖ´ÂÁö)
 	@Override
 	public int checkMobileName(Map<String, String> paraMap) throws SQLException {
 		
-		System.out.println("imple ì‹¤í–‰ë¨");
+		System.out.println("imple ½ÇÇàµÊ");
 		
 		int result = 0;
 		
@@ -442,24 +442,22 @@ public class MemberDAO_imple implements MemberDAO {
             
             if(rs.next()) {
             	
-            	/*
+            	MemberVO mvo = new MemberVO();
+            	
             	mvo.setM_name(rs.getString("m_name"));
             	mvo.setM_mobile(rs.getString("m_mobile"));
-            	
             	sql = " update tbl_member set m_idle = 1 "
             			+ " where m_name = ? and m_mobile = ? ";
             	
             	
+            	pstmt = conn.prepareStatement(sql);
             	pstmt.setString(1, paraMap.get("m_name"));
             	pstmt.setString(2, aes.encrypt(paraMap.get("m_mobile")));
             	
-            	result = pstmt.executeUpdate();*/
-            	
-            	result = 1;
-            	
+            	result = pstmt.executeUpdate();
+            	System.out.println(result);
             }
-			
-			
+            
 		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
             e.printStackTrace();
 		} finally {

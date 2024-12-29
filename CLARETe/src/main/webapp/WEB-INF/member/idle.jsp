@@ -44,13 +44,13 @@
      
      $('div.find_go').click(function(){
         goFind();
- 
-        dataObj = {"mobile":m_mobile,
+        const m_mobile = $("input[name='m_mobile']").val().trim(); // 입력된 휴대폰 번호 가져오기
+       	dataObj = {"m_mobile":m_mobile,
 			  	 "certification_code":"${sessionScope.certification_code}"};
   	  
 	   $.ajax({
 	 	  url:"${pageContext.request.contextPath}/member/smsSend.cl",
-	 	  type:"get",
+	 	  type:"post",
 	 	  data:dataObj,
 	 	  dataType: "json",
 	 	  success:function(json) { 
@@ -117,10 +117,14 @@
 	  // console.log(value);
 	  
 	  if(value == "${sessionScope.certification_code}") {
-		  alert("인증번호 일치");
+		  alert("휴면해제가 완료되었습니다.");
+	  }
+	  else {
+		  alert("인증번호가 일치하지 않습니다.");
+		  return;
 	  }
 	  const frm = document.mobileFrm;
-      frm.action = "<%= ctxPath%>/member/idle.cl";
+      frm.action = "<%= ctxPath%>/login/loginView.cl";
       frm.method = "post";
       frm.submit();
       $("div.find_go").hide();

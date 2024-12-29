@@ -8,33 +8,33 @@ import member.domain.MemberVO;
 
 public interface MemberDAO {
 
-   // 모든 회원을 조회하는 메소드
+   // 紐⑤�� ������ 議고������ 硫�����
    List<MemberVO> SelectAll_member() throws SQLException;
 
-   // 회원가입
+   // ����媛���
    int registerMember(MemberVO member) throws SQLException;
 
-   // 아이디 중복검사
+   // ���대�� 以�蹂듦���
    boolean idDuplicateCheck(String m_id) throws SQLException;
 
-   // 이메일 중복검사
+   // �대��� 以�蹂듦���
    boolean emailDuplicateCheck(String email) throws SQLException;
 
-   // 로그인
+   // 濡�洹몄��
    MemberVO login(Map<String, String> paraMap) throws SQLException;
    
-   // 아이디찾기
+   // ���대��李얘린
    String findUserid(Map<String, String> paraMap) throws SQLException;
 
-   // 비밀번호찾기1
+   // 鍮�諛�踰��몄갼湲�1
    boolean isUserExist(Map<String, String> paraMap) throws SQLException;
 
-   // 비밀번호 찾기
+   // 鍮�諛�踰��� 李얘린
    int pwdUpdate(Map<String, String> paraMap) throws SQLException;
 
-   // 회원탈퇴하는   메소드
+   // �������댄����   硫�����
    int memberDelete(Map<String, String> paraMap) throws SQLException;
 
-   // 휴면해제(전화번호랑 일치하는 회원명이 있는지)
+   // �대㈃�댁��(����踰��몃�� �쇱����� ����紐��� ����吏�)
    int checkMobileName(Map<String, String> paraMap) throws SQLException;
 }
