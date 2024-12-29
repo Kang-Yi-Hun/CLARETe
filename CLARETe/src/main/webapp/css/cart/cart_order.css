@@ -258,3 +258,99 @@ button#btn-order {
     cursor: pointer;
     margin-top: var(--size12);
 }
+
+/*-------------------------------------*/
+
+#deliveryModal {
+	display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 700px;
+    background-color: white; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1),
+           	    0 -10px 30px rgba(0, 0, 0, 0.1),
+                10px 0 30px rgba(0, 0, 0, 0.1),
+                -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    float: right; 
+    font-size: 24px; 
+    cursor: pointer;
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.modal-content > h2 {
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.delivery-item {
+	width: auto;
+	height: auto;
+	margin: 20px 70px;
+	display: flex;
+}
+
+.delivery-item > div:last-child {
+    margin-left: 20px; 
+}
+
+#info {
+    display: inline-block; 
+    width: 80px; 
+    margin-right: 5px;
+}
+
+
+.delivery-item > label > div {
+	margin-bottom: 20px;
+}
+
+.delivery-item input[type="radio"] {
+	margin: 0 5px;
+    width: 20px; 
+    height: 20px; 
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid #000;
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+}
+
+.delivery-item input[type="radio"]:checked::before {
+	content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+div.delivery-item > label {
+	margin-left: 10px;
+}
+
+
+#deliveryButton {
+	position: fixed;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+}

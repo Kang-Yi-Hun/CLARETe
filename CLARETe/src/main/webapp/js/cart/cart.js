@@ -14,6 +14,11 @@ $(document).ready(function() {
 		const priceSpan = container.closest(".product").find(".priceSpan");
 		const basePrice = parseFloat(priceSpan.data("price"));
 
+		const productDiv = container.closest(".product"); // .product를 찾음
+		const quantityInput = $(`#quantity${productDiv.data("index")}`); // data-index로 연결
+		const priceInput = $(`#price${productDiv.data("index")}`); // 가격 input 연결
+		const priceQuantityInput = $(`#priceQuantity${productDiv.data("index")}`); // 총 가격 input 연결
+
 		// 감소 버튼 클릭 이벤트
 		decreaseBtn.click(function() {
 			let count = parseInt(counterValue.attr("data-count"), 10);
@@ -30,14 +35,17 @@ $(document).ready(function() {
 			updateProductPrice(count);
 		});
 
+
 		// 가격 업데이트
 		function updateProductPrice(count) {
 			counterValue.attr("data-count", count); // 수량 업데이트
 			counterValue.text(count); 				// 수량 텍스트 업데이트
+			quantityInput.val(count);               // 수량 input 태그 값 업데이트
 
 			const newPrice = basePrice * count; 	// 향수 가격 * 구매 수량
 			priceSpan.attr("data-price", newPrice); // 새 가격 데이터 업데이트
 			priceSpan.text(new Intl.NumberFormat().format(newPrice));
+			priceQuantityInput.val(newPrice);
 
 			updateTotalPrice();
 		}
@@ -62,20 +70,25 @@ $(document).ready(function() {
 		// 총 상품 금액 업데이트
 		$(".product_price").text(new Intl.NumberFormat().format(total));
 		$("#total_product").text(new Intl.NumberFormat().format(total));
+		$("#input_total_product").val(total);
 
 		// 총 상품 금액이 10만원 이상이면
 		if (total > 100000) {
-			shipping = 3000;
-			$(".shipping_price").text(new Intl.NumberFormat().format(3000));
-			$("#total_shipping").text(new Intl.NumberFormat().format(3000));
-		} else {
 			shipping = 0;
-			$(".shipping_price").text(new Intl.NumberFormat().format(0));
-			$("#total_shipping").text(new Intl.NumberFormat().format(0));
+			$(".shipping_price").text(new Intl.NumberFormat().format(shipping));
+			$("#total_shipping").text(new Intl.NumberFormat().format(shipping));
+			$("#input_total_shipping").val(shipping);
+		} else {
+			shipping = 3000;
+			$(".shipping_price").text(new Intl.NumberFormat().format(shipping));
+			$("#total_shipping").text(new Intl.NumberFormat().format(shipping));
+			$("#input_total_shipping").val(shipping);
 		}
 
+		// 결제 예정 금액
 		$(".total_price").text(new Intl.NumberFormat().format(total + shipping));
 		$("#total_total").text(new Intl.NumberFormat().format(total + shipping));
+		$("#input_total_total").val(total + shipping);
 
 	}
 
@@ -110,51 +123,20 @@ $(document).ready(function() {
 
 
 
-	/////////////////////////////////////////////////////////////////////////
-
-	
-	
-	// 폼 제출 시 데이터 동적으로 추가
-	$("#order_form").submit(function(e) {
-		e.preventDefault(); // 기본 제출 방지
-
-		// 기존 동적 입력 제거
-		$(".dynamic-input").remove();
-
-		// 체크된 상품만 데이터 추가
-		$("input.product-checkbox:checked").each(function() {
+	// submit 되어지면 ~~~
+	$("form[name='order_form']").submit(function(e) {
+		
+		$("input.product-checkbox").each(function() {
 			const productDiv = $(this).closest(".product");
-			const productNames = productDiv.data("id");
-			const quantity = productDiv.find(".counter-value").attr("data-count");
-			const price = productDiv.find(".priceSpan").data("price");
-
-			// 동적으로 input 태그 만들어서 서버로 전송
-			
-			// 상품이름
-			$("<input>")
-				.attr("type", "hidden")
-				.attr("name", "productIds")
-				.addClass("dynamic-input")
-				.val(productNames)
-				.appendTo("#order_form");
-
-			$("<input>")
-				.attr("type", "hidden")
-				.attr("name", "quantities")
-				.addClass("dynamic-input")
-				.val(quantity)
-				.appendTo("#order_form");
-
-			$("<input>")
-				.attr("type", "hidden")
-				.attr("name", "prices")
-				.addClass("dynamic-input")
-				.val(price)
-				.appendTo("#order_form");
+			if (!$(this).is(":checked")) {
+				productDiv.find("input").prop("disabled", true); // 체크되지 않은 상품의 input 비활성화
+			} else {
+				productDiv.find("input").prop("disabled", false); // 체크된 상품의 input 활성화
+			}
 		});
 
-		// 서버로 폼 전송
-		this.submit();
+		return true;
+
 	});
 
 

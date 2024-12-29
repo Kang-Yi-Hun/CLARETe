@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 
 import cart.controller.Cart;
 import cart.domain.CartVO;
+import delivery.domain.DeliveryVO;
 import member.domain.MemberVO;
 import option.domain.OptionVO;
 import product.domain.ProductVO;
@@ -127,5 +128,48 @@ public class CartDAO_imple implements CartDAO {
 		return cartList;
 		
 	} // end of public List<Cart> selectCart(String m_id) throws SQLException----- (장바구니 조회)
+
+	// 배송 정보 조회
+	@Override
+	public List<DeliveryVO> selectDeliveryList(String m_id) throws SQLException {
+		
+		List<DeliveryVO> deliveryList = new ArrayList<>();
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = " select d_num, fk_m_id, d_address, d_detail_address, d_postcode, d_extra, d_mobile, d_name "
+					   + " from tbl_delivery "
+					   + " where fk_m_id = ? "
+					   + " order by d_num ASC ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				DeliveryVO dvo = new DeliveryVO();
+				
+				dvo.setD_num(rs.getInt("d_num"));
+				dvo.setFk_m_id(rs.getString("fk_m_id"));
+				dvo.setD_address(rs.getString("d_address"));
+				dvo.setD_detail_address(rs.getString("d_detail_address"));
+				dvo.setD_postcode(rs.getString("d_postcode"));
+				dvo.setD_extra(rs.getString("d_extra"));
+				dvo.setD_mobile(rs.getString("d_mobile"));
+				dvo.setD_name(rs.getString("d_name"));
+				
+				deliveryList.add(dvo);
+			}
+			
+		} finally {
+			close();
+		}
+		
+		return deliveryList;
+	}
 
 }

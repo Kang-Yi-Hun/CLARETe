@@ -47,9 +47,9 @@
 				</div>
 				
 				
-				<c:forEach var="cvo" items="${cartList}">
+				<c:forEach var="cvo" items="${cartList}" varStatus="status">
 					
-					<div class="product"> <!-- product 하나 시작 -->
+					<div class="product" data-index="${status.index}"> <!-- product 하나 시작 -->
 						<div class="upDiv">
 							
 							<input type="checkbox" class="product-checkbox">
@@ -88,7 +88,15 @@
 							</div>
 	  
 						</div>
-		
+						
+						<!-- 값 넘기는 용도 -->
+						<input type="hidden" name="index" value="${status.index}">
+						<input type="hidden" name="perfumeName" value="${cvo.pvo.p_name}">
+						<input type="hidden" id="quantity${status.index}" name="quantity" value="${cvo.c_count}">
+						<input type="hidden" name="price" value="${cvo.opvo.op_price}">
+						<input type="hidden" id="priceQuantity${status.index}" name="priceQuantity" value="${cvo.opvo.op_price * cvo.c_count}">
+						<input type="hidden" name="option" value="${cvo.opvo.op_ml}">
+						
 					</div> <!-- product 하나 끝 -->
 				
 				</c:forEach>
@@ -139,6 +147,11 @@
 				<a>합계 : </a> 
 				<a id="total_total"></a>	<!-- 총 구매 금액 -->
 			</div>	
+			
+			<input type="hidden" id="input_total_product" name="totalProduct" value=""> 
+			<input type="hidden" id="input_total_shipping" name="totalShipping" value="">
+			<input type="hidden" id="input_total_total" name="totalTotal" value="">
+			
 		</div>
 			
 	</div>
