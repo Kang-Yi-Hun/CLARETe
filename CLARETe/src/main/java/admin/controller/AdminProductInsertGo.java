@@ -36,7 +36,11 @@ public class AdminProductInsertGo extends AbstractController {
 			String option_select_name = request.getParameter("option_select_name");
 			String option_input_name = request.getParameter("option_input_name");
 			
+			System.out.println("확인용 : " + option_select_name);
+			
 			if(option_select_name != null && !option_select_name.isBlank() ) {
+				
+				System.out.println("확인용 : " + option_select_name);
 				
 				String[] arr_option_select_name = option_select_name.split(",");
 				
@@ -50,8 +54,8 @@ public class AdminProductInsertGo extends AbstractController {
 					String price = request.getParameter(arr_option_input_name[i]);
 					
 					
-					// System.out.println("용량"+i+" : " + yongyang);
-					// System.out.println("가격"+i+" : " + price);
+					System.out.println("용량"+i+" : " + yongyang);
+					System.out.println("가격"+i+" : " + price);
 					
 					paraMap.put("yongyang"+i, yongyang);
 					paraMap.put("price"+i, price);

@@ -18,7 +18,7 @@
 <section class="section1">
             <div class="mypage_container">
                 <div class="mypage_sadebar">
-                    <div class="mapage_hello">WELLCOME!</div>
+                    <div class="mapage_hello">WELCOME!</div>
                     <ul>
                         <li>
                             <div>내 정보</div>
@@ -112,6 +112,9 @@
                         </li>
                         <li>
                             <div style="pointer-events: none;">문의하기</div>
+                            <ul>
+                                <li><a href="<%= ctxPath%>/member/MemberAsk.cl">문의 내역</a></li>                               
+                            </ul>
                         </li>
                     </ul>
                     <!-- === 반응형 nav바 === -->

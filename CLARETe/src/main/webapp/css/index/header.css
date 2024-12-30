@@ -120,10 +120,16 @@ nav a{
 /* 해더 2번째 색션 */
 /* 로고 */
 .header-logo{
-    width: 20%;
+    width: 4.5rem;
+    height: 4.5rem;
     font-size: 30px;
     font-weight: 500;
     text-align: center;
+    /* background-color: #dbdbdb; */
+    display: inline-block;
+    background-image: url(../../images/logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 

@@ -1,0 +1,239 @@
+:root{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    --size2  : clamp(2px, 0.1042vw, 200px);
+    --size8  : clamp(6px, 0.4167vw, 200px);
+    --size12 : clamp(10px, 0.6250vw, 200px);
+    --size14 : clamp(12px, 0.7292vw, 200px);
+    --size15 : clamp(14px, 0.7813vw, 200px);
+    --size16 : clamp(16px, 0.8333vw, 200px);
+    --size18 : clamp(17px, 0.9375vw, 200px);
+    --size20 : clamp(18px, 1.0417vw, 200px);
+    --size30 : clamp(28px, 1.5625vw, 200px);
+    --size32 : clamp(30px, 1.6667vw, 200px);
+    --size40 : clamp(36px, 2.0833vw, 200px);
+    --size52 : clamp(48px, 2.7083vw, 200px);
+    --size60 : clamp(50px, 3.1250vw, 200px);
+    --size65 : clamp(60px, 3.3854vw, 200px);
+
+    --size98  : clamp(80px, 5.1042vw, 2000px);
+    --size100 : clamp(80px, 5.2083vw, 2000px);
+    --size120 : clamp(100px, 6.2500vw, 2000px);
+    --size300 : clamp(280px, 15.6250vw, 2000px);
+    --size400 : clamp(380px, 20.8333vw, 2000px);
+    --size670 : clamp(650px, 34.8958vw, 2000px);
+    --size700 : clamp(680px, 36.4583vw, 3000px);
+    --size930 : clamp(900px, 48.4375vw, 10000px);
+}
+
+
+.section1{
+    width: 100%;
+    height: auto;
+}
+
+.product_all_container{
+    width: calc(100% - 160px);
+    height: auto;
+    display: flex;
+    gap: calc(4vw);
+    border: 0px solid red;
+    margin: auto;
+    box-sizing: border-box;
+    padding-top: 4.5rem;
+    padding-bottom: var(--size60);
+    margin-bottom: var(--size100);
+}
+
+
+.product_main_img{
+    width: var(--size700);
+    height: var(--size700);
+    background-color: #E9E9E9;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.product_sub_imgs{
+    width: var(--size120); 
+    height: 100%;
+    border: 0px solid red;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: calc(1vw);
+}
+
+.product_sub_imgs > li{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+	object-fit: cover;
+    background-color: #eee;
+    opacity: 0.5;
+    transition: all 0.4s;
+}
+
+.product_sub_imgs > li:hover{
+    opacity: 1;
+}
+
+.productInfo_contaienr{
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 100%;
+    min-width: 400px;
+    height: 600px;
+    border: 0px solid green;
+}
+
+.product_title{
+    margin-top: var(--size60);
+    font-size: var(--size20);
+    font-weight: 600;
+    margin-bottom: var(--size8);
+}
+
+.product_price{
+    margin-bottom: var(--size20);
+}
+
+.consumerPrice{
+	font-size: var(--size14);
+}
+
+.consumerPrice > span:nth-child(2){
+	color: #797979;
+	text-decoration: line-through;
+	margin-left: 1%;
+}
+.consumerPrice > span:nth-child(3){
+	color: #797979;
+	text-decoration: line-through;
+}
+
+#p_price{
+    font-size: var(--size32);
+    margin-right: var(--size2);
+    color: #4087D2;
+}
+
+.sale{
+	color: #797979;
+}
+
+body > section > div > div.productInfo_contaienr > form > div.product_price > span:nth-child(4),
+body > section > div > div.productInfo_contaienr > form > div.product_price > span:nth-child(5){
+    font-size: var(--size16);
+}
+
+.product_info{
+    font-size: var(--size14);
+    color: #4d4d4d;
+    margin-bottom: var(--size18);
+}
+
+.product_info > div{
+    margin-bottom: var(--size8);
+}
+
+.product_info > div > span:first-child{
+    display: inline-block; 
+    width: var(--size120);
+}
+
+.option_container{
+    font-size: var(--size16);
+    /* margin-bottom: var(--size20); */
+}
+
+.option_container > div:first-child{
+    margin-bottom: var(--size8);
+}
+
+.product_pricebox{
+    margin-top: var(--size30);
+    font-size: var(--size16);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--size30);
+}
+
+.product_pricebox > span > span:nth-child(3){
+    color: #9B9B9B;
+}
+
+.product_btn_container{
+    width: 100%;
+    height: var(--size65);
+    text-align: center;
+    line-height: var(--size65);
+    font-size: var(--size16);
+    display: flex;
+    gap: 0px;
+    cursor: pointer;
+}
+
+.product_btn_container >div:first-child{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+}
+
+.product_btn_container >div:last-child{
+    width: var(--size400);
+    border: #000 solid 1px;
+}
+
+
+
+
+/* select 기본 스타일 */
+select {
+    width: 100%;
+    height: var(--size52);
+    padding: clamp(8px, 0.5208vw, 200px);
+    font-size: clamp(12px, 0.7292vw, 200px);
+    border: 1px solid #A9A9A9;
+    background-color: white;
+    color: #7B7B7B;
+    appearance: none; /* 브라우저 기본 스타일 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg'); /* 드롭다운 화살표 커스텀 */
+    background-repeat: no-repeat;
+    background-position: right clamp(8px, 0.5208vw, 200px) center;
+    background-size: 0.7813vw;
+}
+
+/* select 요소의 컨테이너에 화살표 추가 */
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* 화살표를 select 박스 옆에 배치 */
+.select-container::after {
+    content: '\25BC'; /* 아래 화살표 기호 */
+    position: absolute;
+    top: 50%;
+    right: 0.5208vw;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: var(--size12);
+    color: #4B4B4B;
+}
+
+/* select 박스가 포커스될 때 스타일 */
+select:focus {
+    outline: none;
+}
+
+/* 옵션 스타일 */
+option {
+    padding: 0.5208vw;
+    color: #4B4B4B;
+}

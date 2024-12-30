@@ -1,0 +1,284 @@
+:root{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    border: 0px solid red;
+}
+
+.brand_title{
+    position: absolute;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.brand_title > div:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    opacity: 0;
+    transition: all 1s;
+}
+
+.brand_title > div:nth-child(2){
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    font-weight: 500;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.scroll_info{
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-100%, 0px);
+    display: flex;
+    gap: 30px;
+}
+
+
+
+.scroll_info > span:first-child{
+    transform: rotate(90deg);
+    font-size: 14px;
+    color: #797979;
+}
+
+.scrollbar{
+    width: 1px;
+    height: 160px;
+    background-color: none;
+    position: relative;
+}
+
+.scrollbar::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1px;
+    /* height: 120px; */
+    background-color: #797979;
+    animation-name : scroll;
+    animation-duration : 2s;
+    animation-iteration-count : infinite;
+}
+
+
+
+@keyframes scroll {
+    0% {
+        height: 120px;
+    }
+    50%{
+        height: 160px;
+    }
+    100% {
+        height: 120px;
+    }
+}
+
+.section2{
+    width: calc(100% - 160px);
+    position: relative;
+    margin: auto;
+    top: -300px;
+}
+
+.center-box {
+    position: sticky;
+    top: 6rem;
+    height: calc(100vh - 8rem);
+    background-color: #000;
+    width: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: width 0.1s ease-out;
+    overflow: hidden;
+}
+
+.overlay-image {
+    position: sticky;
+    top: -1080px;
+    z-index: 10;
+    transform: scale(3); /* 초기 크기를 3배로 설정 */
+    opacity: 0;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    width: 100%;
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+
+.section3{
+    width: 100%;
+    height: 1600px;
+    /* background-color: #fff; */
+    position: relative;
+    color: #fff;
+}
+
+.brand_story_container{
+    width: 100%;
+    height: auto;
+    position: sticky;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(0px, -50%);
+    background-attachment: fixed;
+}
+
+.brand_story_container > div{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.brand_story_title{
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+
+.key{
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    transform: rotate(-45deg);
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.brand_story{
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.brand_story_end{
+    font-size: 14px;
+    margin-top: 40px;
+    font-weight: 500;
+}
+
+.section4{
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.category_container > div:first-child{
+    font-size: 40px;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding-top: 10%;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+
+.category_box{
+    width: 80%;
+    padding: 20px;
+    background-color: #fff;
+    margin: 10px auto;
+    display: flex;
+}
+
+.category{
+	position: relative;
+    height: 500px;
+    background-color: #dbdbdb;
+    border: 2px solid #fff;
+    flex: 1;
+    transition: all 2s;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+a{
+	color:#fff;
+	text-decoration: none;
+}
+
+div.category_box > a > div:first-child{
+	position: absolute;
+	top:0;
+	left:0;
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+	transition: all 2s;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.2;
+}
+
+div.category_box > a > div:last-child{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	z-index:3;
+	opacity: 100;
+	color:#fff;
+}
+
+.category > a{
+	display: block;
+	
+}
+
+.category:hover{
+    flex: 3;
+}
+
+.section5{
+    width: 100%;
+    height: 100vh;
+}
+
+body > section.section4 > div > div.category_box > a:nth-child(1){
+	background-size:cover; 
+	background-repeat:no-repeat; 
+	background-image: url("https://www.glam.com/img/gallery/what-you-need-to-know-about-skin-scents/what-are-skin-scents-1659543096.jpg")
+}
+
+
+body > section.section4 > div > div.category_box > a:nth-child(2){
+	background-size:cover; 
+	background-repeat:no-repeat; 
+	background-image: url("https://i0.wp.com/botanicalsbreath.com.au/wp-content/uploads/2023/07/Perfumes.jpg?resize=882%2C457&ssl=1")
+}
+
+body > section.section4 > div > div.category_box > a:nth-child(3){
+	background-size:cover; 
+	background-repeat:no-repeat; 
+	background-image: url("https://cdn4.beautinow.com/wp-content/uploads/2023/08/pexelsnastyasensei954405_7447a398dc444886a49a79093cdf3b13.jpgv=1691390421")
+}
+
+body > section.section4 > div > div.category_box > a:nth-child(4){
+	background-size:cover; 
+	background-repeat:no-repeat; 
+	background-image: url("https://i.pinimg.com/736x/cb/19/8c/cb198cee08c342b93dadd6c17d865e1e.jpg")
+}
+

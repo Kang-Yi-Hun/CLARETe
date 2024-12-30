@@ -40,40 +40,51 @@
                         <span><a href="<%= ctxPath%>/shop/allProduct.cl?cname=3">autumn</a></span>
                         <span><a href="<%= ctxPath%>/shop/allProduct.cl?cname=4">winter</a></span>
                         <span>
-                            <span>For Him</span>
+                            <span><a href="<%= ctxPath%>/shop/allProduct.cl?cname=5">For Him</a></span>
                             <span>/</span>
-                            <span>For Her</span>
+                            <span><a href="<%= ctxPath%>/shop/allProduct.cl?cname=6">For Her</a></span>
                         </span>
                     </div>
                 </div>
                 <!-- 카테고리 목록 -->
 
                 <div style="width: calc(100% - 80px);">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center;">
                         <div>
                             <div>총 <span>${requestScope.totalHITCount}</span>개</div>
                         </div>
-                        <div>
-                            <div>신상품순</div>
+                        <div class="select-container">
+                            <select class="select" name="select_order">
+                                <option value="신상품순">신상품순</option>
+                                <option value="판매순">판매순</option>
+                                <option value="높은금액순">높은금액순</option>
+                                <option value="낮은금액순">낮은금액순</option>
+                            </select>
                         </div>
                     </div>
 
                         <ul class="cardcontainer" style="height: auto;">
-                            <!-- 해당 위치에 상품들이 나열됩니다!!!!!! -->
+                            <%-- 해당 위치에 상품들이 나열됩니다!!!!!! --%>
                         </ul>
 
 
                         <div style="display: flex; justify-content: space-between; margin-top: 60px;">
-                        	<span id="end" style="display:block; margin:20px; font-size: 14pt; font-weight: bold; color: red;"></span>
+                        	<span></span>
+                        	<span id="end" style="text-align:center; display:block; margin:20px; font-size: 12pt; font-weight: 400; color: #797979;"></span>
+                        	<span></span>
 	                        <span id="totalHITCount">${requestScope.totalHITCount}</span>   
 		           			<span id="countHIT">0</span>    
                         </div>
                         
                         <div style="display: flex;">
 					         <div style="margin: 20px 0 20px auto;">
-					            <button class="btn btn-info" onclick="goTop()">맨위로가기(scrollTop 1로 설정함)</button>
+					            <button class="btn btn-info" onclick="goTop()">TOP</button>
 					         </div>
-					      </div>
+					    </div>
+					    
+					    <div id="loading" style="display: none;">
+						    로딩중...
+						</div>
 
                 </div>
             </div>

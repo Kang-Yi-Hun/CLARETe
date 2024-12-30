@@ -14,4 +14,7 @@ public interface ProductDAO {
 	// 카테고리 상품의 전체개수를 알아온다.
 	int totalPspecCount(String string) throws SQLException;
 
+	// 상품 상세페이지의 정보를 알아온다
+	ProductVO selectProductOne(int p_num) throws SQLException;
+
 }
