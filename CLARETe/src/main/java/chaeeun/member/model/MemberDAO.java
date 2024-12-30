@@ -36,5 +36,8 @@ public interface MemberDAO {
    int memberDelete(Map<String, String> paraMap) throws SQLException;
 
    // �대㈃�댁��(����踰��몃�� �쇱����� ����紐��� ����吏�)
-   int checkMobileName(Map<String, String> paraMap) throws SQLException;
+   int idleUpdate(Map<String, String> paraMap) throws SQLException;
+
+   // 휴면회원 조회하는 메소드
+   boolean idlecheck(Map<String, String> paraMap) throws SQLException;
 }

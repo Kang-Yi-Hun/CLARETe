@@ -420,7 +420,7 @@ public class MemberDAO_imple implements MemberDAO {
 
 	// �޸�����(��ȭ��ȣ�� ��ġ�ϴ� ȸ������ �ִ���)
 	@Override
-	public int checkMobileName(Map<String, String> paraMap) throws SQLException {
+	public int idleUpdate(Map<String, String> paraMap) throws SQLException {
 		
 		
 		int result = 0;
@@ -466,4 +466,33 @@ public class MemberDAO_imple implements MemberDAO {
 		return result;
 	}
 
+	
+	// 휴면회원 조회하는 메소드
+	@Override
+	public boolean idlecheck(Map<String, String> paraMap) throws SQLException {
+		
+		boolean isUserExist = false;
+		try {
+			conn = ds.getConnection();
+			
+			
+			String sql = " select m_id, m_name, m_mobile"
+					   + " from tbl_member "
+					   + " where m_name = ? and m_mobile = ? and m_idle = 0 ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("m_name"));
+        	pstmt.setString(2, aes.encrypt(paraMap.get("m_mobile")));
+            
+            rs = pstmt.executeQuery();
+		
+            isUserExist = rs.next();
+		}  catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	        e.printStackTrace();
+		} finally {
+			close();
+		}
+		return isUserExist;
+	}
+	
 }
