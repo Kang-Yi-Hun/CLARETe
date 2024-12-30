@@ -45,13 +45,18 @@ a{
 .category_title{
     width: calc(100% - 80px);
     height: auto;
+    min-width: 450px;
     padding-top: 4.5rem;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--size16);
-    margin-bottom: var(--size40)
+    margin-bottom: var(--size40);
+}
+
+body > section > div > div > div.product_container > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1){
+	font-size: var(--size16);
 }
 
 .category_title > div:first-child{
@@ -64,7 +69,8 @@ a{
 .category_title > div:nth-child(2){
     width: calc(100% - 80px);
     height: var(--size60);
-    background-color: #E8E8E8;
+    background-color: #000;
+    color: #fff;
     margin-top: var(--size60);
     display: flex;
     align-items: center;
@@ -72,7 +78,9 @@ a{
     font-size: var(--size15);
 }
 
-
+.category_title > div:nth-child(2) a{
+	color: #fff;
+}
 
 
 .cardcontainer{
@@ -119,6 +127,14 @@ a{
 
 
 @media (max-width: 768px) {
+	body > section > div > div > div.product_container > div:nth-child(2) > div:nth-child(1){
+		margin-top: var(--size60);
+	}
+	
+	body > section > div > div > div.product_container > div:nth-child(2){
+		margin: auto;	
+	}
+	
     .cardcontainer{
         grid-template-columns: 1fr 1fr;
     }
@@ -142,9 +158,89 @@ a{
     }
 }
 
-
 @media (max-width: 575px) {
     .cardcontainer{
         grid-template-columns: 1fr;
     }
 }
+
+
+/* select 기본 스타일 */
+select {
+    width: clamp(90px, 5.2083vw, 800px);
+    padding: clamp(8px, 0.5208vw, 800px);
+    font-size: clamp(12px, 0.7292vw, 800px);
+    border: 1px solid #B1B1B1;
+    border-radius: 0.2604vw;
+    background-color: white;
+    color: #333;
+    appearance: none; /* 브라우저 기본 스타일 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg'); /* 드롭다운 화살표 커스텀 */
+    background-repeat: no-repeat;
+    background-position: right clamp(8px, 0.5208vw, 200px) center;
+    background-size: 0.7813vw;
+}
+
+/* select 요소의 컨테이너에 화살표 추가 */
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: clamp(90px, 5.2083vw, 800px);
+    margin-left: 0.2083vw;
+}
+
+/* 화살표를 select 박스 옆에 배치 */
+.select-container::after {
+    content: '\25BC'; /* 아래 화살표 기호 */
+    position: absolute;
+    top: 50%;
+    right: 0.5208vw;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: clamp(12px, 0.7292vw, 800px);
+    color: #4B4B4B;
+}
+
+/* select 박스가 포커스될 때 스타일 */
+select:focus {
+    outline: none;
+}
+
+/* 옵션 스타일 */
+option {
+    padding: 0.5208vw;
+}
+
+
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+
+.btn-info{
+	opacity: 0;
+	position: fixed;
+	bottom: 5%;
+	right: 5%;
+	z-index: 20;
+	font-size: 18px;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px;
+    transition: all 0.5s;
+}
+

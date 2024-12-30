@@ -16,6 +16,37 @@ public class OrderVO {
 	int status; // �����Ȳ �����0, �����1, �����2
 	String o_price; // �ֹ��ݾ�
 	
+	
+	// select용
+	
+	String m_name;
+	public String getM_name() {
+		return m_name;
+	}
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+	public String getM_email() {
+		return m_email;
+	}
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+String m_mobile;
+
+	public String getM_mobile() {
+	return m_mobile;
+}
+public void setM_mobile(String m_mobile) {
+	this.m_mobile = m_mobile;
+}
+	String m_email;
+	
+	
+	
+	
+	
+	
 // MemberVO 조인	
 	private MemberVO membervo;
 

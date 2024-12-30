@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+div#container {
+    width: 70%; 
+    margin: 5% auto; /**중앙 정렬한다.**/
+}
+
+div#title {
+	/* border: solid 1px red; */
+	font-size: 25pt;
+ 	width: 10%; 
+ 	height: 5%;
+    margin: 5% auto; 
+	/* font-weight: bold; */
+}
+
+hr#first {
+	border: solid 1px;
+}
+hr#second {
+	background:black;
+    height:1px;
+    border:0;
+
+}
+
+div#menu {
+	/* border: solid 1px red;	 */
+ 	width: 20%; 
+    margin: 5% auto; 	
+}
+div#searchbar {
+	margin-bottom: -1%;
+}
+
+
+a#a_qna {
+	color: #c0c0c0;
+}
+
+
+span#span2 {
+	margin-left: 60%;
+	color: gray;
+}
+
+
+
+span#faq_qnaSpan2 {
+	/* border: solid 1px red; */
+	margin-left: 2%;
+	margin-right: 50%;
+}
+span#faq_qnaSpan3 {
+	margin-right: 15%;
+}
+
+a {
+ 
+  color: black;
+}
+
+a:hover { 
+	color:gray; 
+	text-decoration: none;
+}
+
+input#search {
+	border-radius:0.5%;
+}
+
+input#searchbtn {
+	margin-left:0.3%;
+	background-color: black;
+	color: white;
+	border-radius:0.5%;
+}
+

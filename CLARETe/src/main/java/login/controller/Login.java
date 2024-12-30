@@ -44,7 +44,7 @@ public class Login extends AbstractController {
 			
 			String clientip = request.getRemoteAddr();
 			
-			request.setAttribute("id", id); // 로그인 한 아이디 값 알아오기 위해 추가
+			
 			
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("id", id);
@@ -75,6 +75,7 @@ public class Login extends AbstractController {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginuser", loginuser);
+				session.setAttribute("id", id); // 로그인 한 아이디 값 알아오기 위해 추가
 				
 				System.out.println(loginuser.getM_id());
 				

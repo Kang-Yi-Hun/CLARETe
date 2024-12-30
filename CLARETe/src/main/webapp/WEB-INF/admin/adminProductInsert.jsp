@@ -209,8 +209,8 @@
 		//	alert(arr_select_name.join(","));
             ////////////////////////////////////////////////////////////////////////
 		    
-			$("input:text[name='option_select_name']").val(arr_select_name.join(","));
-			$("input:text[name='option_input_name']").val(arr_input_name.join(","));
+			$("input:hidden[name='option_select_name']").val(arr_select_name.join(","));
+			$("input:hidden[name='option_input_name']").val(arr_input_name.join(","));
 		} // end of if(div_opt_length < 3)--------------------------------	
 	
 		

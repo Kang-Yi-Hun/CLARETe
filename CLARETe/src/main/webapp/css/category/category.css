@@ -1,0 +1,93 @@
+.section{
+    width: 100%;
+    height: 100vh;
+    border: 0px solid red;
+    box-sizing: border-box;
+    padding-top: 4.5rem;
+}
+
+.category-container{
+    box-sizing: border-box;
+    border: 0px solid blue;
+    width: calc(100% - 160px);
+    height: calc(100% - 4.5rem - 100px);
+    margin: 60px auto 100px auto;
+    display: flex;
+}
+
+.genger{
+    width: 33.3%;
+    height: 100%;
+    background-color: #dbdbdb;
+    border: 3px solid #000;
+    flex: 1;
+    overflow: hidden; /* 이미지가 컨테이너를 넘지 않도록 설정 */
+    position: relative;
+    transform: skew(-2deg);
+    cursor: pointer;
+    box-sizing: border-box;
+    transform-style: preserve-3d; /* 스큐로 인한 렌더링 문제 완화 */
+    backface-visibility: hidden; /* 스큐 렌더링 이슈를 줄임 */
+    will-change: transform; /* 스큐 변환 관련 최적화 */
+}
+
+.genger:hover{
+    flex: 2;
+    
+}
+
+.man{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    transition: background-size 1s ease, background-position 1s ease, flex 1s, width 1s; /* 부드러운 효과 설정 */
+    background-image: url("https://scontent-gmp1-1.xx.fbcdn.net/v/t1.6435-9/185830036_339618571102307_1364278475778673166_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YipTxJfHev0Q7kNvgEz54YW&_nc_zt=23&_nc_ht=scontent-gmp1-1.xx&_nc_gid=AFQ8dyFrkwMtARxsh3bQHGI&oh=00_AYAwRs9C9Ht4UeCTgq0Uv0f3VR80OCAp9iGrkHg8i021lw&oe=67983211");
+}
+
+.all{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    transition: background-size 1s ease, background-position 1s ease, flex 1s, width 1s; /* 부드러운 효과 설정 */
+    background-image: url("https://d2v80xjmx68n4w.cloudfront.net/members/portfolios/r3LOw1655172083.jpg?w=500");
+}
+
+.woman{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    transition: background-size 1s ease, background-position 1s ease, flex 1s, width 1s; /* 부드러운 효과 설정 */
+    background-image: url("https://d2v80xjmx68n4w.cloudfront.net/members/portfolios/rT4lm1655172084.jpg?w=500");
+}
+
+.man:hover{
+    background-position: left center; /* X축 이동 */
+    width: 50%;
+}
+
+.forHimBox{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    opacity: 0.5;
+    position: relative;
+}
+
+.for_box{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(0, -50%);
+    color: #fff;
+}
+
+.for_title{
+    font-size: 40px;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}

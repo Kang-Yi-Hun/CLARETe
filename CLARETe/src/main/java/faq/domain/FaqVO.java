@@ -1,16 +1,16 @@
 package faq.domain;
 
 public class FaqVO {
-	int FAQ_num; // ÀÚÁÖ¹¯´ÂÁú¹®¹øÈ£
-	String ask; // Áú¹®
-	String answer; // ´äº¯
+	int FAQ_num; // ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	String ask; // ï¿½ï¿½ï¿½ï¿½
+	String answer; // ï¿½äº¯
 	
 	
 	public int getFAQ_num() {
 		return FAQ_num;
 	}
-	public void setFAQ_num(int fAQ_num) {
-		FAQ_num = fAQ_num;
+	public void setFAQ_num(int faq_num) {
+		FAQ_num = faq_num;
 	}
 	public String getAsk() {
 		return ask;
