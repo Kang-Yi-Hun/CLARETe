@@ -17,44 +17,52 @@ public class MemberDelete extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 
 		String method = request.getMethod(); // "GET" ���� "POST"
 		
 		HttpSession session = request.getSession();
 		MemberVO loginuser = (MemberVO) session.getAttribute("loginuser");
-		
+		String loc = "";
+		String message = "";
 		if("POST".equalsIgnoreCase(method)) {
-			String m_status = request.getParameter("m_status");
+			
+			String m_pwd = request.getParameter("m_pwd");
+			
 			
 			Map<String, String> paraMap = new HashMap<>();
-			paraMap.put("m_status", m_status);
+
 			paraMap.put("m_id", loginuser.getM_id());
-			paraMap.put("m_pwd", loginuser.getM_pwd());
+			paraMap.put("m_pwd", m_pwd);
 			
 			int memberDelete = mdao.memberDelete(paraMap);
 			
 			if(memberDelete == 1) {
+				request.setAttribute("m_pwd", m_pwd);
 				
-				request.setAttribute("memberDelete", memberDelete);
-				request.setAttribute("m_status", m_status);
-		        
-			}
-			else {
-				String message = "sql오류로 회원탈퇴 실패!!";
-		        String loc = "javascript:history.back()";
-		         
+				message = "회원탈퇴가 완료되었습니다.";
+		        loc = request.getContextPath()+"/index.cl";
 		        request.setAttribute("message", message);
 		        request.setAttribute("loc", loc);
 		         
-		        super.setRedirect(false); 
 		        super.setViewPage("/WEB-INF/msg.jsp");
+		        session.removeAttribute("loginuser");
+		        return;
+			}
+			else {
+				message = "비밀번호가 일치하지 않습니다.";
+		        loc = "javascript:history.back()";
+		         
+		        request.setAttribute("message", message);
+		        request.setAttribute("loc", loc);
+		        
+		        
+		        super.setViewPage("/WEB-INF/msg.jsp");
+		        return;
 			}
 		}
-		
-		
-		
-	//	request.setAttribute("m_id", m_id);
-	//	request.setAttribute("method", method);
+			
+		request.setAttribute("method", method);
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/member/memberDelete.jsp");
 

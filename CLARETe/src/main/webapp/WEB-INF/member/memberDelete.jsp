@@ -23,8 +23,6 @@ $(document).ready(function(){
 	
 	const method = "${requestScope.method}";
 	
-	
-	
 	console.log(method);
 	
     $("div.find_go").click(function(){
@@ -36,7 +34,8 @@ $(document).ready(function(){
 
 function goFind() {
 	
-	const m_pwd = '${sessionScope.loginuser.m_pwd}';
+	/*
+	const m_pwd = "${requestScope.m_pwd}";
 	console.log(m_pwd);
 	if(m_pwd == $("input:password[name='m_pwd']").val()){
 		alert("회원이 정상적으로 탈퇴되었습니다. \n 감사합니다.");
@@ -44,7 +43,7 @@ function goFind() {
 	else {
 		alert("비밀번호가 일치하지 않습니다.");
 		return;
-	}
+	}*/
  		
 	const frm = document.memberDelete;
     frm.action = "<%= ctxPath%>/mypage/memberDelete.cl";
