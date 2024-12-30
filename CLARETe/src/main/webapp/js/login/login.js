@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
     // "로그인" 버튼 click 이벤트 처리
     $("button#login-btn").click(() => {
         goLogin();  // 로그인 시도
@@ -27,10 +27,18 @@ function goLogin() {
 
     if ($("input#id").val().trim() == "") {
         alert("암호를 입력하세요.");
-        $("input#loginPwd").val("").focus();
+        $("input#pwd").val("").focus();
         return;     // goLogin() 함수 종료
     }
 
+	
+	if ($('input:checkbox[id="saveid"]').prop('checked')) {
+		localStorage.setItem('saveid', $('input#id').val());
+	}
+	else {
+		localStorage.removeItem('saveid');
+	}
+	
     const frm = document.loginFrm;
     frm.submit();
 

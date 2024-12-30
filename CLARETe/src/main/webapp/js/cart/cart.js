@@ -22,11 +22,43 @@ $(document).ready(function() {
 		// 감소 버튼 클릭 이벤트
 		decreaseBtn.click(function() {
 			let count = parseInt(counterValue.attr("data-count"), 10);
-			if (count > 1) {
-				count--;
-				updateProductPrice(count);
+
+			// 1 이하로 감소하지 않도록 방지
+			if (count <= 1) {
+				alert("상품 수량은 최소 1개 이상이어야 합니다.");
+				return; 
 			}
+
+			count--;
+			updateProductPrice(count);
+
+			console.log($("input:text[name='cartNum']").val());
+			
+			// AJAX 요청
+			$.ajax({
+				url: "cartUpdate.cl",
+				data: {
+					cartNum: $("input:text[name='cartNum']").val(),
+					count: count // 서버로 변경된 수량 전달
+				},
+				type: "post",
+				async: false,
+				dataType: "json",
+
+				success: function(json) {
+					if (json.decrease === "1") {
+						console.log("장바구니 수량 감소");
+					} else {
+						console.log("AJAX 응답 처리 실패");
+					}
+				},
+
+				error: function(request, status, error) {
+					alert("code: " + request.status + "\nmessage: " + request.responseText + "\nerror: " + error);
+				}
+			});
 		});
+
 
 		// 증가 버튼 클릭 이벤트
 		increaseBtn.click(function() {
@@ -47,7 +79,7 @@ $(document).ready(function() {
 			priceSpan.text(new Intl.NumberFormat().format(newPrice));
 			priceQuantityInput.val(newPrice);
 
-			updateTotalPrice();
+			updateTotalPrice(); 
 		}
 
 	});

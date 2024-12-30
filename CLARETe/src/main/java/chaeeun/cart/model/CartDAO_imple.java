@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -170,6 +171,32 @@ public class CartDAO_imple implements CartDAO {
 		}
 		
 		return deliveryList;
+	}
+
+	
+	// 장바구니 수량 감소
+	@Override
+	public int decreaseQuantity(Map<String, String> paraMap) throws SQLException {
+		
+		int n = 0;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = " update tbl_cart set c_count = c_count - 1 "
+					   + " where c_num = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("cartNum"));
+			
+			n = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return n;
 	}
 
 }

@@ -77,7 +77,7 @@ public class OrderDAO_imple implements OrderDAO {
 					   + " values(seq_order.nextVal, ?, ?, ?, ?, ?, ?, 1) ";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, );
+			//pstmt.setString(1, );
 			
 		} finally {
 			close();

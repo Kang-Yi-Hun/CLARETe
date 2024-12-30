@@ -191,9 +191,9 @@
         			</div>
         			
         			<!-- 적립금 -->
-        			<div style="display: flex; justify-content: space-between; margin: 10px 0;">
+        			<div style="margin: 10px 0;">
             			<span class="point">적립금</span>
-            			<input class="point_price" /> / <span class="myPoint">${requestScope.m_point}</span>
+            			<input class="point_price" /> / <span class="myPoint"><fmt:formatNumber value="${requestScope.m_point}" pattern="#,###,###"/></span>
         			</div>
         			<hr>
 
@@ -207,12 +207,12 @@
     			</div>
 				
 				<!-- 주문하기 버튼 -->
-	    		<button type="submit" id="btn-order" >결제하기</button>
+	    		<button type="button" id="btn-order" >결제하기</button>
 	    		
 	    		<!-- 값 넘기기 용도 -->
 	    		<input type="hidden" name="totalInput" value="${requestScope.totalTotal}" />
 	    		<input type="hidden" name="selectedDNum" value="selectedDNum" />
-	    		<input type="text" id="contextPath" value="<%= ctxPath%>" />
+	    		<input type="hidden" id="contextPath" value="<%= ctxPath%>" />
 	    		
 			</div> <!-- payment_go_box -->
 			
