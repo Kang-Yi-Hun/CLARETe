@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		// 입력값이 최대치를 초과했는지 확인
 		if (pointValue > maxPointValue) {
 			alert(`적립금은 최대 ${maxPointValue.toLocaleString()}원까지만 사용할 수 있습니다.`);
-			pointInput.value = maxPointValue; // 최대값으로 제한
-			pointValue = maxPointValue; // 값도 최대값으로 설정
+			pointInput.value = 0; // 최대값으로 제한
+			pointValue = 0; // 값도 최대값으로 설정
 		}
 
 		const updatedTotalPrice = originalTotalPrice - pointValue;
@@ -111,10 +111,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	const btnOrder = document.getElementById("btn-order");
 	btnOrder.addEventListener("click", function() {
-
+	
+		
 		const ctxPath = document.getElementById('contextPath').value.trim();
 		console.log(ctxPath);
-
+		console.log("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
+		
 		const IMP = window.IMP;
 		IMP.init("imp28303334");	// 채은꺼 가맹점 식별코드
 

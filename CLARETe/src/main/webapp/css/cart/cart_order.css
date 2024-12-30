@@ -231,12 +231,19 @@ span.shipping_price {
 span.point {
 	margin-left: var(--size20);
 	margin-bottom: 10px;
+	margin-right: 156px;
 }
 
 .point_price {
 	width: 80px;
 	height: 25px;
+	margin-right: 5px;
+}
+
+span.myPoint {
 	margin-right: var(--size20);
+	margin-bottom: 10px;
+	margin-left: 5px;
 }
 
 span.total {
