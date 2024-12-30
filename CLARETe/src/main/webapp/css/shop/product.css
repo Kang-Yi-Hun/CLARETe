@@ -1,0 +1,150 @@
+:root{
+    --size15 : clamp(14px, 0.7813vw, 200px);
+    --size16 : clamp(16px, 0.8333vw, 200px);
+    --size32 : clamp(30px, 1.6667vw, 200px);
+    --size60 : clamp(50px, 3.1250vw, 200px);
+    --size40 : clamp(36px, 2.0833vw, 200px);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+.section1{
+    width: 100%;
+    min-height: 100vh;
+    border: 0px solid red;
+}
+
+
+.side_img{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 27.0833vw;
+    height: 100vh;
+    background-image: url('https://img.marieclairekorea.com/2021/06/mck_60d2d5792b3eb.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 0px solid green;
+}
+
+.product_container{
+    width: 100%;
+    height: auto;
+    border: 0px solid green;
+    margin-bottom: 100px;
+}
+
+.category_title{
+    width: calc(100% - 80px);
+    height: auto;
+    padding-top: 4.5rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--size16);
+    margin-bottom: var(--size40)
+}
+
+.category_title > div:first-child{
+    font-size: var(--size32);
+    margin-top: var(--size60);
+    display: flex;
+    align-items: center;
+}
+
+.category_title > div:nth-child(2){
+    width: calc(100% - 80px);
+    height: var(--size60);
+    background-color: #E8E8E8;
+    margin-top: var(--size60);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: var(--size15);
+}
+
+
+
+
+.cardcontainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: calc(2vw);
+    margin-bottom: var(--size60);
+    margin: auto;
+}
+
+.cardbox{
+    width: 100%;
+    height: auto; 
+    /* background-color: #dbdbdb; */
+    transition: all 0.5s;
+}
+
+.cardbox:hover{
+    transform: translateY(-0.5208vw);
+}
+
+.cardimg{
+    width: 100%; 
+    aspect-ratio: 1 / 1;
+	object-fit: cover;
+    background-color: #f1f1f1;
+}
+
+.cardname{
+    font-size: var(--size16);
+    text-align: center;
+}
+
+.cardprice{
+    font-size: var(--size16);
+    text-align: center;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .cardcontainer{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .side_img{
+        display: none;
+    }
+
+    .product_container{
+        width: 100%;
+    }
+
+    .category_title{
+        margin: auto;
+    }
+
+
+    #container > section > div > div > div.product_container > div:nth-child(2){
+        width: 100%;
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 575px) {
+    .cardcontainer{
+        grid-template-columns: 1fr;
+    }
+}

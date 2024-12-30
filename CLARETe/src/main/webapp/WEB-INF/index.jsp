@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/css/index/header.css" />
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/css/index/footer.css" />
 
+
 <jsp:include page="header.jsp"></jsp:include>
 
 <section style="width: 100%; height: 100vw;"></section>

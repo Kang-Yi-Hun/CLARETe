@@ -26,6 +26,11 @@
 	
 	<!-- Optional JavaScript -->
 	<script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
+	
+	<!-- font style -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body> 
     <div id="container">
@@ -77,7 +82,7 @@
                             </div>
                         </li>
                         <li class="menu">
-                            <a>PRODUCT</a>
+                            <a href="<%= ctxPath%>/shop/allProduct.cl">PRODUCT</a>
                             <div class="depth">
                                 <ul>
                                     <li><a href="#">SPRING</a></li>
