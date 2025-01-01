@@ -30,7 +30,7 @@
 
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="<%= ctxPath%>/js/member/memberRegister.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/js/mypage/memberUpdate.js"></script>
 
 </head>
 <body> 
@@ -52,42 +52,33 @@
 
             <div id="divName" class="formDiv">
                <span>이름</span>
-               <input type="text" name="name" id="name" class="register-input requiredInfo" placeholder="이름을 입력해주세요" />
-               <span class="error">이름은 필수입력 사항입니다.</span>
+               <input type="hidden" name="m_id" value="${sessionScope.loginuser.m_id}" />
+               <input type="text" name="m_name" id="m_name" class="register-input requiredInfo" placeholder="이름을 입력해주세요" value="${sessionScope.loginuser.m_name}" />
             </div>
             
             <div id="divPwd" class="formDiv">
                <span>비밀번호</span>
-               <input type="password" name="pwd" id="pwd" class="register-input requiredInfo" placeholder="비밀번호를 입력해주세요" />
+               <input type="password" name="m_pwd" id="m_pwd" class="register-input requiredInfo" placeholder="비밀번호를 입력해주세요" value="${sessionScope.loginuser.m_pwd}"/>
                <span class="error">영문/숫자/특수문자(공백제외)만 허용하며 2가지를 조합하세요.</span>
             </div>
             
             
             <div id="divPwdCheck" class="formDiv">
                <span>비밀번호확인</span>
-               <input type="password" id="pwdCheck" class="register-input requiredInfo" placeholder="비밀번호를 한번 더 입력해주세요" />
+               <input type="password" id="m_pwdCheck" class="register-input requiredInfo" placeholder="비밀번호를 한번 더 입력해주세요" value="${sessionScope.loginuser.m_pwd}" />
                <span class="error">비밀번호가 일치하지 않습니다.</span>
             </div>
          
             
-            
-            <div id="divEmail" class="formDiv">
-               <span>이메일</span>
-               <input type="text" name="email" id="email" class="register-input requiredInfo" placeholder="예: hongkd@naver.com" />
-               <input type="button" id="emailCheck" value="중복확인" onclick="duplicateEmail()" />
-               <span id="emailCheckResult"></span>
-               <span class="error">이메일 형식에 맞지 않습니다.</span>
-            </div>
-            
             <div id="divMobile" class="formDiv">
                <span>휴대폰</span>
-               <input type="text" name="mobile" id="mobile" class="register-input requiredInfo" placeholder="숫자만 입력해주세요" />
+               <input type="text" name="m_mobile" id="m_mobile" class="register-input requiredInfo" placeholder="숫자만 입력해주세요" value="${sessionScope.loginuser.m_mobile}"/>
                <span class="error">숫자만 입력해주세요.</span>
             </div>
             
             <div id="divPostcode" class="formDiv">
                <span>우편번호</span>
-               <input type="text" name="postcode" id="postcode" class="address-input requiredInfo" placeholder="우편번호" />
+               <input type="text" name="m_postcode" id="m_postcode" class="address-input requiredInfo" placeholder="우편번호" value="${sessionScope.loginuser.m_postcode}"/>
                <%-- 우편번호 찾기 --%>
                <input type="button" id="zipcodeSearch" value="우편번호 찾기" onclick="searchPostcode()"/>
                <span class="error">우편번호 형식에 맞지 않습니다.</span>
@@ -95,17 +86,17 @@
             
             <div id="divAddress" class="formDiv">
                <span>주소</span>
-               <input type="text" name="address" id="address" class="register-input requiredInfo" size="40" maxlength="200" placeholder="주소" /><br>      
+               <input type="text" name="m_address" id="m_address" class="register-input requiredInfo" size="40" maxlength="200" placeholder="주소" value="${sessionScope.loginuser.m_address}"/><br>      
             </div>
             
             <div id="divAddress" class="formDiv">
             	<span>상세주소</span>
-               <input type="text" name="detailaddress" id="detailAddress" class="address-input requiredInfo" size="40" maxlength="200" placeholder="상세주소" />&nbsp;
-               <input type="text" name="extraaddress" id="extraAddress" class="address-input requiredInfo" size="40" maxlength="200" placeholder="참고항목" />  
+               <input type="text" name="m_detail_address" id="m_detail_address" class="address-input requiredInfo" size="40" maxlength="200" placeholder="상세주소" value="${sessionScope.loginuser.m_detail_address}" />&nbsp;
+               <input type="text" name="m_extra" id="m_extra" class="address-input requiredInfo" size="40" maxlength="200" placeholder="참고항목" value="${sessionScope.loginuser.m_extra}" />  
                <span class="error">주소를 입력하세요.</span>
             </div>
             <div id="submit">
-           <input type="button" value="가입하기" onclick="goRegister()" />
+           <input type="button" value="변경하기" onclick="goUpdate()" />
         </div>
          
          

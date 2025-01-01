@@ -29,16 +29,13 @@ public class Idle extends AbstractController {
          paraMap.put("m_name", m_name);
          paraMap.put("m_mobile", m_mobile);
          
-         boolean bool = mdao.idlecheck(paraMap);
-         
-         if(bool) {
             
             String certification =request.getParameter("certification");
             
             HttpSession session = request.getSession();
             String certification_code = (String)session.getAttribute("certification_code");
             
-            if(certification == certification_code) {
+            if(certification.equals(certification_code)) {
                
                int n = mdao.idleUpdate(paraMap);
                
@@ -46,12 +43,9 @@ public class Idle extends AbstractController {
                   request.setAttribute("m_name", m_name);
                   request.setAttribute("m_mobile", m_mobile);
                   
-                  return;
                }
             } // end of if(certification == certification_code)
             
-         } // end of if(bool)
-         
       } // end of if("POST".equalsIgnoreCase(method))
       super.setRedirect(false);
       super.setViewPage("/WEB-INF/member/idle.jsp");

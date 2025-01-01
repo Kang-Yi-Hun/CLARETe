@@ -354,12 +354,6 @@ function goRegister() {
       	return; // goRegister() 함수 종료
    	}
 	
-	if(!b_emailcheck_click){
-		// "이메일 중복확인을 클릭하지 않은 경우"
-		alert("이메일 중복확인을 클릭하셔야 합니다.");
-		return; // goRegister() 함수 종료
-   	};
-	
 	// ** 우편번호 및 주소를 입력했는지 검사하기 시작 ** //
    	let b_addressInfo = true;
 	

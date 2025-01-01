@@ -33,8 +33,8 @@
      
      if(method == "POST"){
         $("div.find_go").hide();
-//        $('input:text[name="m_name"]').val("${requestScope.m_name}");
-//        $('input:text[name="m_mobile"]').val("${requestScope.m_mobile}");
+        $('input:text[name="m_name"]').val("${requestScope.m_name}");
+        $('input:text[name="m_mobile"]').val("${requestScope.m_mobile}");
         $("input:text[name='m_name']").hide();
         $("input:text[name='m_mobile']").hide();
         $("div.Certification_number").show();
@@ -49,7 +49,7 @@
                "certification_code":"${sessionScope.certification_code}"};
        
       $.ajax({
-         url:"${pageContext.request.contextPath}/member/smsSend.cl",
+         url:"smsSend.cl",
          type:"post",
          data:dataObj,
          dataType: "json",
@@ -99,7 +99,6 @@
          alert("전화번호를 올바르게 입력하세요!!");
        return; // 종료
       }    
-     
       
       const frm = document.idFindFrm;
       frm.action = "<%= ctxPath%>/member/idle.cl";
@@ -124,11 +123,8 @@
         return;
      }
      const frm = document.mobileFrm;
-      frm.action = "<%= ctxPath%>/login/loginView.cl";
-      frm.method = "post";
-      frm.submit();
-      $("div.find_go").hide();
-      $("div.find_go2").show();
+     frm.action = "<%= ctxPath%>/login/loginView.cl";
+     frm.submit();
   } // end of function goCertification() 
   
 </script>
@@ -143,6 +139,7 @@
            </div>
            <div class="input_box">
    
+                   <input type="hidden" name="m_id"/>
                <div class="input_container">
                    <input type="text" name="m_name" placeholder="이름을 입력해주세요" />
                    <input type="text" name="m_mobile" placeholder="전화번호를 입력해주세요" />

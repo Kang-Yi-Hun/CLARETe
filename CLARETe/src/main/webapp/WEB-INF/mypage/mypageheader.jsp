@@ -10,6 +10,7 @@
 
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/template/template.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/js/template/template.js"></script>
 
 <script type="text/javascript">
 
@@ -23,7 +24,7 @@
                         <li>
                             <div>내 정보</div>
                             <ul>
-                                <li><a href="<%= ctxPath%>/mypage/mypage_memberUpdate.cl">내 정보 수정</a></li>
+                                <li><a onclick="goSubmit()" href="<%= ctxPath%>/mypage/mypage_memberUpdate.cl">내 정보 수정</a></li>
                                 <li><a href="#">배송지 입력</a></li>
                                 <li><a href="<%= ctxPath%>/mypage/memberDelete.cl">회원탈퇴</a></li>
                             </ul>

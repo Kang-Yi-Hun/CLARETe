@@ -23,7 +23,7 @@ public class Login extends AbstractController {
 	    
 	    if(!"POST".equalsIgnoreCase(method)) {	// "GET"
 			
-			String message = "비정상적인 경로로 들어왔습니다.";
+			String message = "鍮��������� 寃쎈�濡� �ㅼ�댁���듬����.";
 			String loc = "javascript:history.back()";
 			
 			request.setAttribute("message", message);
@@ -31,7 +31,7 @@ public class Login extends AbstractController {
 			
 			super.setViewPage("/WEB-INF/msg.jsp");
 			
-			return; // execute(HttpServletRequest request, HttpServletResponse respone) 메소드 종료함.  
+			return; // execute(HttpServletRequest request, HttpServletResponse respone) 硫����� 醫�猷���.  
 		} 
 	    
 	    else {	// "POST"
@@ -44,7 +44,7 @@ public class Login extends AbstractController {
 			
 			String clientip = request.getRemoteAddr();
 			
-			request.setAttribute("id", id); // 로그인 한 아이디 값 알아오기 위해 추가
+			request.setAttribute("id", id); // 濡�洹몄�� �� ���대�� 媛� �����ㅺ린 ���� 異�媛�
 			
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("id", id);
@@ -54,14 +54,14 @@ public class Login extends AbstractController {
 			MemberVO loginuser = mdao.login(paraMap); 
 			
 			if(loginuser != null) {
-				System.out.println(id + "로그인 성공");
+				System.out.println(id + "濡�洹몄�� �깃났");
 				System.out.println("Logged-in User: " + loginuser.getM_id());
 				
 				if (loginuser.getM_idle() == 0) {
-					// 휴면계정이면
+					// �대㈃怨����대㈃
 					
-					String message = "로그인을 한지 1년이 지나서 휴면상태로 되었습니다.\\n휴면을 풀어주는 페이지로 이동합니다!!";
-					String loc = request.getContextPath()+"/member/idle.cl";		// 휴면풀어주는 페이지 만들어야 해요
+					String message = "濡�洹몄�몄�� ��吏� 1���� 吏����� �대㈃����濡� �����듬����.\\n�대㈃�� ���댁＜�� ���댁�濡� �대���⑸����!!";
+					String loc = request.getContextPath()+"/member/idle.cl";		// �대㈃���댁＜�� ���댁� 留��ㅼ�댁�� �댁��
 				
 					request.setAttribute("message", message);
 					request.setAttribute("loc", loc);
@@ -72,17 +72,24 @@ public class Login extends AbstractController {
 					return;
 				}
 				
-				HttpSession session = request.getSession();
+				HttpSession session = request.getSession();	
 				session.setAttribute("loginuser", loginuser);
+				session.setAttribute("id", id);
+				session.setAttribute("m_pwd", loginuser.getM_pwd());
+				session.setAttribute("m_mobile", loginuser.getM_mobile());
+				session.setAttribute("m_postcode", loginuser.getM_postcode());
+				session.setAttribute("m_address", loginuser.getM_address());
+				session.setAttribute("m_detail_address", loginuser.getM_detail_address());
+				session.setAttribute("m_extra", loginuser.getM_extra());
 				
 				System.out.println(loginuser.getM_id());
 				
 				if(loginuser.isRequirePwdChange() ) {
-					 // 비밀번호를 변경한지 3개월 이상된 경우
+					 // 鍮�諛�踰��몃�� 蹂�寃쏀��吏� 3媛��� �댁���� 寃쎌��
 					
-					String message = "비밀번호를 변경하신지 3개월이 지났습니다.\\n암호를 변경하는 페이지로 이동합니다!!"; 
+					String message = "鍮�諛�踰��몃�� 蹂�寃쏀����吏� 3媛����� 吏��ъ�듬����.\\n���몃�� 蹂�寃쏀���� ���댁�濡� �대���⑸����!!"; 
 					String loc = request.getContextPath()+"/index.up";
-					// 원래는 위와같이 index.up 이 아니라 암호를 변경하는 페이지로 URL을 잡아주어야 한다.!!
+					// ������ ����媛��� index.up �� ������ ���몃�� 蹂�寃쏀���� ���댁�濡� URL�� �≪��二쇱�댁�� ����.!!
 					
 					request.setAttribute("message", message);
 					request.setAttribute("loc", loc);
@@ -90,8 +97,8 @@ public class Login extends AbstractController {
 					super.setRedirect(false); 
 					super.setViewPage("/WEB-INF/msg.jsp");
 					
-					return; // 메소드 종료 
-				} else { // 비밀번호를 변경한지 3개월 미만인 경우
+					return; // 硫����� 醫�猷� 
+				} else { // 鍮�諛�踰��몃�� 蹂�寃쏀��吏� 3媛��� 誘몃��� 寃쎌��
 				
 					super.setRedirect(true);
 					super.setViewPage(request.getContextPath()+"/index.cl");
@@ -111,7 +118,7 @@ public class Login extends AbstractController {
 			} // end of if(loginuser != null) {}
 			
 			else {
-				String message = "탈퇴하신 회원입니다.";
+				String message = "���댄���� ����������.";
 		        String loc = "javascript:history.back()";
 		         
 		        request.setAttribute("message", message);
