@@ -35,8 +35,9 @@ a{
 .find_title{
     font-size: 30px;
     margin: 0 auto 30px auto;
+	width: 50%;
+    text-align: center;
 }
-
 .input_box{
     width: 333px;
     height: auto;

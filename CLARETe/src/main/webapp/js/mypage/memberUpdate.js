@@ -22,50 +22,7 @@ $(document).ready(function() {
 		}
 	});	// end of $("input#m_name").blur((e) => {})
 	
-	// "비밀번호" input 태그 포커스 벗어나면 blur 이벤트 처리
-	$("input#m_pwd").blur((e) => {
-		
-		const regExp_pwd = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g);
-		const bool = regExp_pwd.test($(e.target).val());
-		
-		if (!bool) {
-			// 비밀번호가 정규표현식에 위배된 경우 
-			$("form[name='registerFrm'] :input").prop("disabled", true);
-			$(e.target).prop("disabled", false);
-			$(e.target).val("").focus();
-			$(e.target).parent().find("span.error").show();
-		} else {
-			// 정상적으로 입력한 경우
-			$("form[name='registerFrm'] :input").prop("disabled", false);
-			$(e.target).parent().find("span.error").hide();
-		}
 
-	});	// end of $("input#m_pwd").blur((e) => {})
-	
-	
-	// "비밀번호확인" input 태그 포커스 벗어나면 blur 이벤트 처리
-	$("input#m_pwdCheck").blur((e) => {
-		
-		if( $("input#m_pwd").val() != $(e.target).val() ) {
-			// 비밀번호 != 비밀번호확인 
-			$("form[name='registerFrm'] :input").prop("disabled", true);
-			$("input#m_pwd").prop("disabled", false);
-			$(e.target).prop("disabled", false);
-			$("input#m_pwd").val("").focus();
-			$(e.target).val("");
-			$(e.target).parent().find("span.error").show();
-		} else {
-			// 비밀번호 == 비밀번호확인 
-			$("form[name='registerFrm'] :input").prop("disabled", false);
-			$(e.target).parent().find("span.error").hide();
-		}	
-		
-	});	// end of $("input#m_pwdCheck").blur((e) => {})
-	
-   
-	
-	
-	
 	// "휴대폰" input 태그 포커스 벗어나면 blur 이벤트 처리
 	$("input#m_mobile").blur((e) => {
 		

@@ -27,11 +27,17 @@
      */
      
      if(method == "GET"){
+        $("div.find_go2").hide();
+        $("div.Certification_number").hide();
      }
      
      if(method == "POST"){
+        $("div.find_go").hide();
         $('input:text[name="m_name"]').val("${requestScope.m_name}");
         $('input:text[name="m_mobile"]').val("${requestScope.m_mobile}");
+        $("input:text[name='m_name']").hide();
+        $("input:text[name='m_mobile']").hide();
+        $("div.Certification_number").show();
         
      }
      
@@ -43,16 +49,16 @@
           dataObj = {"m_name":m_name,
         		"m_mobile":m_mobile,
                "certification_code":"${sessionScope.certification_code}"};
-          console.log(dataObj);
+       
       $.ajax({
          url:"smsSend.cl",
          type:"post",
          data:dataObj,
          dataType: "json",
          success:function(json) { 
-        	 console.log(json);
+        	 alert("success");
               if(json.success_count == 1) {
-                 alert("인증번호가 전송되었습니다.!!");   
+                 alert("인증번호가 전송되었습니다.!!");
               }
               else {
                  alert("인증번호 발송 실패!!");
@@ -62,11 +68,15 @@
              alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
          }
       });
-      
-	     console.log("${sessionScope.certification_code}");
-
+     console.log("${sessionScope.certification_code}");
+     
      }); // end of $('div.find_go').click(function(){})
      
+     $("div.find_go2").click(function(){
+       
+        goCertification();
+        
+     }); // end of $('div.find_go2').click(function(){})
      
   }); // end of $(document).ready(function(){})--------------- 
   
@@ -92,15 +102,33 @@
        return; // 종료
       }    
       
-      
       const frm = document.idFindFrm;
       frm.action = "<%= ctxPath%>/member/idle.cl";
       frm.method = "post";
       frm.submit();
+      $("div.find_go").hide();
+      $("div.find_go2").show();
       
   } // end of function goFind() {})---------------- 
   
-
+  function goCertification() {
+     
+     // alert("테스트");
+     const value = $("input:text[name='certification']").val();
+     // console.log(value);
+     
+     if(value == "${sessionScope.certification_code}") {
+        alert("휴면해제가 완료되었습니다.");
+     }
+     else {
+        alert("인증번호가 일치하지 않습니다.");
+        return;
+     }
+     const frm = document.mobileFrm;
+     frm.action = "<%= ctxPath%>/login/loginView.cl";
+     frm.submit();
+  } // end of function goCertification() 
+  
 </script>
 
 <form name="idFindFrm">
@@ -118,20 +146,23 @@
                    <input type="text" name="m_name" placeholder="이름을 입력해주세요" />
                    <input type="text" name="m_mobile" placeholder="전화번호를 입력해주세요" />
                </div>
-
-		<div class="Certification_number">
-				<br>
-				<input type="hidden" name="certification" placeholder="인증번호를 입력해주세요" />
-			</div>
-	
-			<div class="find_go">
+   
+               <div class="Certification_number">
+                   <br><input type="text" name="certification" placeholder="인증번호를 입력해주세요" />
+               </div>
+   
+               <div class="find_go">
                    확인
                </div>
-    <%--          <div class="find_go2" style="width: 333px; height: 48px; margin: 0 auto; margin-top: 28px;">
-     			인증번호확인
-   			</div> 
-    --%>      </div>
+               
+           </div>
        </div>
+</form>
+
+<form name="mobileFrm">
+   <div class="find_go2" style="width: 333px; height: 48px; margin: 0 auto; margin-top: 28px;">
+     인증번호확인
+   </div>
 </form>
 
 

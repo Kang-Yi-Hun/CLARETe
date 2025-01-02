@@ -75,7 +75,6 @@ public class Login extends AbstractController {
 				HttpSession session = request.getSession();	
 				session.setAttribute("loginuser", loginuser);
 				session.setAttribute("id", id);
-				session.setAttribute("m_pwd", loginuser.getM_pwd());
 				session.setAttribute("m_mobile", loginuser.getM_mobile());
 				session.setAttribute("m_postcode", loginuser.getM_postcode());
 				session.setAttribute("m_address", loginuser.getM_address());

@@ -15,6 +15,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.apache.jasper.tagplugins.jstl.core.Param;
+
 import member.domain.MemberVO;
 import util.security.AES256;
 import util.security.SecretMyKey;
@@ -220,11 +222,11 @@ public class MemberDAO_imple implements MemberDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = " SELECT m_id, m_pwd, m_name, m_point, pwdchangegap, NVL( lastlogingap, TRUNC( months_between(sysdate, m_register)) ) AS lastlogingap, "
+			String sql = " SELECT m_id, m_name, m_point, pwdchangegap, NVL( lastlogingap, TRUNC( months_between(sysdate, m_register)) ) AS lastlogingap, "
 					   + " m_idle, m_email, m_mobile, m_postcode, m_address, m_detail_address, m_extra "
 					   + " FROM "
 					   + " ( "
-					   + "    SELECT m_id, m_pwd, m_name, m_point, "
+					   + "    SELECT m_id, m_name, m_point, "
 					   + "    trunc( months_between(sysdate, m_lastpwd) ) AS pwdchangegap, "
 					   + "    m_register, m_idle, m_email, m_mobile, m_postcode, m_address, m_detail_address, m_extra "
 					   + "    FROM tbl_member WHERE m_status = 1 AND m_id = ? and m_pwd = ? "
@@ -248,7 +250,6 @@ public class MemberDAO_imple implements MemberDAO {
 				member = new MemberVO();
 
 				member.setM_id(rs.getString("m_id"));
-				member.setM_pwd(rs.getString("m_pwd"));
 				member.setM_name(rs.getString("m_name"));
 				member.setM_point(rs.getInt("m_point"));
 				
@@ -423,26 +424,19 @@ public class MemberDAO_imple implements MemberDAO {
 	@Override
 	public int idleUpdate(Map<String, String> paraMap) throws SQLException {
 		
-		
 		int result = 0;
 		
 		try {
 			conn = ds.getConnection();
             	
-            	MemberVO mvo = new MemberVO();
-            	
-            	mvo.setM_name(rs.getString("m_name"));
-            	mvo.setM_mobile(rs.getString("m_mobile"));
             	String sql = " update tbl_member set m_idle = 1 "
             			+ " where m_name = ? and m_mobile = ? ";
-            	
             	
             	pstmt = conn.prepareStatement(sql);
             	pstmt.setString(1, paraMap.get("m_name"));
             	pstmt.setString(2, aes.encrypt(paraMap.get("m_mobile")));
             	
             	result = pstmt.executeUpdate();
-            	System.out.println(result);
             
 		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -494,7 +488,6 @@ public class MemberDAO_imple implements MemberDAO {
 			 conn = ds.getConnection();
 			 
 			 String sql = " update tbl_member set m_name = ? "
-					    + "                     , m_pwd = ? "
 					    + "                     , m_mobile = ? "
 					    + "                     , m_postcode = ? " 
 					    + "                     , m_address = ? "
@@ -506,13 +499,12 @@ public class MemberDAO_imple implements MemberDAO {
 			 pstmt = conn.prepareStatement(sql);
 				
 			 pstmt.setString(1, member.getM_name());
-			 pstmt.setString(2, Sha256.encrypt(member.getM_pwd()) ); // ���몃�� SHA256 ��怨�由ъ��쇰� �⑤갑�� ���명�� ���⑤��.
-			 pstmt.setString(3, aes.encrypt(member.getM_mobile()) ); // �대���곕��몃�� AES256 ��怨�由ъ��쇰� ��諛⑺�� ���명�� ���⑤��. 
-			 pstmt.setString(4, member.getM_postcode());
-			 pstmt.setString(5, member.getM_address());
-			 pstmt.setString(6, member.getM_detail_address());
-			 pstmt.setString(7, member.getM_extra());
-			 pstmt.setString(8, member.getM_id());
+			 pstmt.setString(2, aes.encrypt(member.getM_mobile()) ); // �대���곕��몃�� AES256 ��怨�由ъ��쇰� ��諛⑺�� ���명�� ���⑤��. 
+			 pstmt.setString(3, member.getM_postcode());
+			 pstmt.setString(4, member.getM_address());
+			 pstmt.setString(5, member.getM_detail_address());
+			 pstmt.setString(6, member.getM_extra());
+			 pstmt.setString(7, member.getM_id());
 			 
 			 result = pstmt.executeUpdate();
 			 

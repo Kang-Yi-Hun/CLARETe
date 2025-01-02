@@ -56,20 +56,6 @@
                <input type="text" name="m_name" id="m_name" class="register-input requiredInfo" placeholder="이름을 입력해주세요" value="${sessionScope.loginuser.m_name}" />
             </div>
             
-            <div id="divPwd" class="formDiv">
-               <span>비밀번호</span>
-               <input type="password" name="m_pwd" id="m_pwd" class="register-input requiredInfo" placeholder="비밀번호를 입력해주세요" value="${sessionScope.loginuser.m_pwd}"/>
-               <span class="error">영문/숫자/특수문자(공백제외)만 허용하며 2가지를 조합하세요.</span>
-            </div>
-            
-            
-            <div id="divPwdCheck" class="formDiv">
-               <span>비밀번호확인</span>
-               <input type="password" id="m_pwdCheck" class="register-input requiredInfo" placeholder="비밀번호를 한번 더 입력해주세요" value="${sessionScope.loginuser.m_pwd}" />
-               <span class="error">비밀번호가 일치하지 않습니다.</span>
-            </div>
-         
-            
             <div id="divMobile" class="formDiv">
                <span>휴대폰</span>
                <input type="text" name="m_mobile" id="m_mobile" class="register-input requiredInfo" placeholder="숫자만 입력해주세요" value="${sessionScope.loginuser.m_mobile}"/>

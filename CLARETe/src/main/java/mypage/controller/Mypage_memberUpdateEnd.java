@@ -24,7 +24,6 @@ public class Mypage_memberUpdateEnd extends AbstractController {
 			
 			String m_id = request.getParameter("m_id");  
 			String m_name = request.getParameter("m_name");
-			String m_pwd = request.getParameter("m_pwd");
 			String m_mobile = request.getParameter("m_mobile");
 			String m_postcode = request.getParameter("m_postcode");
 			String m_address = request.getParameter("m_address");
@@ -34,7 +33,6 @@ public class Mypage_memberUpdateEnd extends AbstractController {
 			MemberVO member = new MemberVO();
 			member.setM_id(m_id);
 			member.setM_name(m_name);
-			member.setM_pwd(m_pwd);
 			member.setM_mobile(m_mobile);
 			member.setM_postcode(m_postcode);
 			member.setM_address(m_address);
@@ -51,7 +49,6 @@ public class Mypage_memberUpdateEnd extends AbstractController {
 	                MemberVO loginuser = (MemberVO) session.getAttribute("loginuser");
 	                
 	                loginuser.setM_name(m_name);
-	                loginuser.setM_pwd(m_pwd);
 	                loginuser.setM_mobile(m_mobile);
 	                loginuser.setM_postcode(m_postcode);
 	                loginuser.setM_address(m_address);
