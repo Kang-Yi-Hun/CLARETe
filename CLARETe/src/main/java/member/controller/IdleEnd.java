@@ -17,11 +17,11 @@ public class IdleEnd extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		String method = request.getMethod(); // "GET" Ǵ "POST"
+		String method = request.getMethod(); // "GET" 풔 "POST"
 
 		request.setAttribute("method", method);
 
-		System.out.println("method 메소드 확인"+ method);
+		System.out.println("method 硫����� ����"+ method);
 		HttpSession session = request.getSession();
 		
 		if("get".equalsIgnoreCase(method)) {
@@ -39,7 +39,7 @@ public class IdleEnd extends AbstractController {
 		}
 		if ("POST".equalsIgnoreCase(method)) {
 
-			System.out.println("실ㅇ행ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
+			System.out.println("�ㅳ����������������������������������������");
 
 			String m_name = request.getParameter("m_name");
 			String m_mobile = request.getParameter("m_mobile");
@@ -49,7 +49,7 @@ public class IdleEnd extends AbstractController {
 			System.out.println("uuuuuuuuuuuuuuuuuuuu" + m_name); // ok
 			System.out.println("uuuuuuuuuuuuuuuuuuuu" + m_mobile); // ok
 
-			String certification = request.getParameter("certification"); // ? 값 자체가 없음
+			String certification = request.getParameter("certification"); // ? 媛� ��泥닿� ����
 			System.out.println("uuuuuuuuuuuuuuuuuuuu" + certification);
 
 			
@@ -57,14 +57,14 @@ public class IdleEnd extends AbstractController {
 			
 			System.out.println("certification_code          " + certification_code);
 
-			
+			System.out.println(paraMap.get("m_name"));
 
 			if (certification.equals(certification_code)) {
 				
 				int n = mdao.idleUpdate(paraMap);
 				
 				if(n==1) {
-					String message = "휴면이 해제되었습니다.";
+					String message = "�대㈃�� �댁�������듬����.";
 			        String loc = request.getContextPath()+"/login/loginView.cl";
 			        
 			        request.setAttribute("message", message);
@@ -72,7 +72,7 @@ public class IdleEnd extends AbstractController {
 			        
 			        super.setViewPage("/WEB-INF/msg.jsp");
 				}
-				System.out.println("n값 확인" + n);
+				System.out.println("n媛� ����" + n);
 				//		if (n == 1) {
 				
 				//		}
